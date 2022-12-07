@@ -6,15 +6,24 @@ using System.Threading.Tasks;
 
 namespace HITO2_IPO_NUEVO
 {
-    internal class Usuario
+    public class Usuario
     {
-        public string  User { set; get; }
+        public String User { set; get; }
         public String Pass { set; get; }
+        public String Name { set; get; }
+        public String LastName { set; get; }
+        public String Email { set; get; }
+        public DateTime LastLogin { set; get; }
+        public Uri ImgUrl { set; get; }
 
-        public Usuario(string user, string pass)
+        public Usuario(string user, string pass, string name, string lastName, string email, DateTime lastLogin)
         {
             User = user;
             Pass = pass;
+            Name = name;
+            LastName = lastName;
+            Email = email;
+            LastLogin = lastLogin;               
         }
     }
 }

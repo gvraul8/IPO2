@@ -26,10 +26,7 @@ namespace HITO2_IPO_NUEVO
     public partial class MainWindow : Window
     {
         private Principal principal;
-
-        private BitmapImage imagCheck = new BitmapImage(new Uri("/imagenes/Check.png", UriKind.Relative)); 
-        private BitmapImage imagCross = new BitmapImage(new Uri("/imagenes/incorrect.png", UriKind.Relative));
-
+        String defaultImg = "https://cdn-icons-png.flaticon.com/512/74/74472.png";
 
         public MainWindow()
         {
@@ -41,7 +38,7 @@ namespace HITO2_IPO_NUEVO
         {
             if (e.Key == Key.Return)
             {
-                imgCheckUsuario.Source = imagCheck;
+
                 pb_contrasena.IsEnabled = true;
                 pb_contrasena.Focus();
             }
@@ -65,13 +62,12 @@ namespace HITO2_IPO_NUEVO
 
                 if (tb_usuario.Text.Equals(usuario.User) && pb_contrasena.Password.Equals(usuario.Pass))
                 {
-                    principal= new Principal();
+                    principal= new Principal(usuario);
                     principal.Show();
                     this.Close();
                 }
                 else
                 {
-                    imgCheckContrasena.Source = imagCross;
                     lb_errorCombinacion.Visibility = Visibility.Visible;
                 }
                 
@@ -96,9 +92,22 @@ namespace HITO2_IPO_NUEVO
             doc.Load(fichero.Stream);
             foreach (XmlNode node in doc.DocumentElement.ChildNodes)
             {
-                var nuevoUsuario = new Usuario("", "");
+                //  Usuario(string user, string pass, string name, string lastName, string email, DateTime lastLogin, Uri imgUrl)
+                var nuevoUsuario = new Usuario("", "","","","", DateTime.MinValue);
                 nuevoUsuario.User = node.Attributes["User"].Value;
                 nuevoUsuario.Pass = node.Attributes["Pass"].Value;
+                nuevoUsuario.Name = node.Attributes["Name"].Value;
+                nuevoUsuario.LastName = node.Attributes["LastName"].Value;
+                nuevoUsuario.Email = node.Attributes["Email"].Value;
+                nuevoUsuario.LastLogin = DateTime.Now;
+                if ((node.Attributes["ImgUrl"].Value) is "")
+                {
+                    nuevoUsuario.ImgUrl =  new Uri(defaultImg, UriKind.Absolute);
+                } else
+                {
+                    nuevoUsuario.ImgUrl = new Uri(node.Attributes["ImgUrl"].Value, UriKind.Absolute);
+                }
+                
                 listado.Add(nuevoUsuario);
             }
             return listado;

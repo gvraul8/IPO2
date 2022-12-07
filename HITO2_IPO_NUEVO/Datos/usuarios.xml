@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Usuario>
-	<Usuario User="admin" Pass="admin" />
+	<Usuario User="admin" Pass="admin" Name="Admin" LastName="Admin Admin" Email="admin@uclm.es" LastLogin="1/1/1900" ImgUrl="https://www.diariodenavarra.es/uploads/2012/08/01/60b173ba22e0b.jpeg" />
 
 </Usuario>
 

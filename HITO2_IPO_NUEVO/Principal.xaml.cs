@@ -21,18 +21,26 @@ namespace HITO2_IPO_NUEVO
     /// </summary>
     public partial class Principal : Window
     {
-        List<Ruta> listado = new List<Ruta>();
-        public Principal()
+        private MainWindow login;
+        List<Ruta> listadoRutas = new List<Ruta>();
+        Usuario user;
+
+        public Principal(Usuario u)
         {
+            user = u;
             InitializeComponent();
-            listado = CargarContenidoXML();
-            foreach (Ruta  ruta in listado)
+
+            listadoRutas = CargarContenidoRutasXML();
+            foreach (Ruta ruta in listadoRutas)
             {
-               ListBoxRutas.Items.Add(ruta.Nombre);
+                ListBoxRutas.Items.Add(ruta.Nombre);
             }
+            
+            
+            PrintUserData();
         }
 
-        private List<Ruta> CargarContenidoXML()
+        private List<Ruta> CargarContenidoRutasXML()
         {
             List<Ruta> listado = new List<Ruta>();
             // Cargar contenido de prueba
@@ -59,10 +67,33 @@ namespace HITO2_IPO_NUEVO
             return listado;
         }
 
-        void PrintText(object sender, RoutedEventArgs e)
+
+        void PrintUserData()
+        {
+            lbNombreUsuario.Content = user.Name.ToString(); ;
+            lbApellidosUsuario.Content = user.LastName.ToString();
+            lbEmailUsuario.Content=user.Email.ToString();  
+            lbUltimoAccesoUsuario.Content = user.LastLogin.ToString();
+
+            var fullFilePath = user.ImgUrl.ToString();
+            BitmapImage bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(fullFilePath, UriKind.Absolute);
+            bitmap.EndInit();
+            imgUsuario.Source = bitmap;
+        }
+
+        private void btCerrarSesion_Click(object sender, RoutedEventArgs e)
+        {
+            login= new MainWindow();
+            login.Show();
+            this.Close();
+        }
+
+        private void PrintText(object sender, SelectionChangedEventArgs e)
         {
             int index = ListBoxRutas.SelectedIndex;
-            var rutaAux = listado[index];
+            var rutaAux = listadoRutas[index];
 
             lb_nombre.Content = rutaAux.Nombre.ToString();
             tb_origen.Text = rutaAux.Origen.ToString();
@@ -70,8 +101,8 @@ namespace HITO2_IPO_NUEVO
             tb_provincia.Text = rutaAux.Provincia.ToString();
             tb_dificultad.Text = rutaAux.Dificultad.ToString();
             tb_plazas.Text = rutaAux.PlazasDisponibles.ToString();
-            tb_material.Text = rutaAux.MaterialNecesario.ToString();
-            tb_realizaciones.Text = rutaAux.NumeroDeRealizaciones.ToString();
+            //tb_material.Text = rutaAux.MaterialNecesario.ToString();
+            //tb_realizaciones.Text = rutaAux.NumeroDeRealizaciones.ToString();
             tb_fecha.Text = Convert.ToDateTime(rutaAux.Fecha.ToString()).ToString();
 
             // https://stackoverflow.com/questions/18435829/showing-image-in-wpf-using-the-url-link-from-database
@@ -91,7 +122,10 @@ namespace HITO2_IPO_NUEVO
 
             img_interesRuta.Source = bitmap2;
 
-            //lb_nombre.Content = ListBoxRutas.SelectedItem; 
+            bt_anadir.IsEnabled = true;
+            bt_editar.IsEnabled = true;
+            bt_eliminar.IsEnabled = true;
         }
     }
+    
 }
