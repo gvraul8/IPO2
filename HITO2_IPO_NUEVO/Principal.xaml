@@ -14,7 +14,7 @@
             <ColumnDefinition Width="0.8*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0">
+        <Grid x:Name="gridDatosUsuario" Grid.Column="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.05*"/>
                 <ColumnDefinition Width="0.90*"/>
@@ -30,7 +30,7 @@
             </Grid.RowDefinitions>
             <Image x:Name="imgUsuario" HorizontalAlignment="Center" Height="Auto" VerticalAlignment="Center" Width="Auto" Grid.Column="1" Grid.Row="1" Source="/Imagenes/fotoUsuario.jpg"/>
 
-            <Grid  HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="Auto" Grid.Column="1" Grid.Row="3">
+            <Grid x:Name="gridLabelsUsuario"  HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="Auto" Grid.Column="1" Grid.Row="3">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.16*"/>
                     <RowDefinition Height="0.16*"/>
@@ -57,7 +57,7 @@
 
 
 
-        <Grid x:Name="pnContenido" Grid.Column="2" >
+        <Grid x:Name="gridContenido" Grid.Column="2" >
             <TabControl x:Name="tcPestanas" Background="WhiteSmoke" Width="auto">
                 <TabItem x:Name="tiRutas" Header="Rutas" IsSelected="True" >
                     <TabItem.Background>
@@ -135,7 +135,7 @@
                                     <TextBox x:Name="tb_fecha" TextWrapping="Wrap" IsReadOnly="True" Grid.Row="7" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
 
                                     <TextBlock x:Name="lb_dificultad" TextWrapping="Wrap" Text="Dificultad" Grid.Row="8" Grid.ColumnSpan="2" Grid.RowSpan="2" />
-                                    <ComboBox x:Name="cb_dificultad"  IsReadOnly="True" Grid.Row="9" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                                    <TextBox x:Name="tb_dificultad"  IsReadOnly="True" Grid.Row="9" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
 
                                     <TextBlock x:Name="lb_plazas" TextWrapping="Wrap" Text="Plazas disponibles" Grid.Row="10" Grid.ColumnSpan="2" />
                                     <TextBox x:Name="tb_plazas" TextWrapping="Wrap" IsReadOnly="True" Grid.Row="11" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
@@ -266,13 +266,15 @@
                         </LinearGradientBrush>
                     </TabItem.Background>
                     <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="22*"/>
-                            <ColumnDefinition Width="525*"/>
-                        </Grid.ColumnDefinitions>
+                        <!-- COPIAR Y PEGAR ELEMENTOS QUE QUIERAS DENTRO DE LA PESTAÑA GUIAS DESDE LINEA 71 A 240-->
                     </Grid>
+                   
                 </TabItem>
                 <TabItem x:Name="tiExcursionista" Header="Excursionistas">
+                    <Grid>
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="tiOfertas" Header="Ofertas">
                     <Grid>
                     </Grid>
                 </TabItem>

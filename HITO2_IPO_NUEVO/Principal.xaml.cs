@@ -98,7 +98,7 @@ namespace HITO2_IPO_NUEVO
             tb_origen.Text = rutaAux.Origen.ToString();
             tb_destino.Text = rutaAux.Origen.ToString();
             tb_provincia.Text = rutaAux.Provincia.ToString();
-            cb_dificultad.Text = rutaAux.Dificultad.ToString();
+            tb_dificultad.Text = rutaAux.Dificultad.ToString();
             tb_plazas.Text = rutaAux.PlazasDisponibles.ToString();
             //tb_material.Text = rutaAux.MaterialNecesario.ToString();
             //tb_realizaciones.Text = rutaAux.NumeroDeRealizaciones.ToString();
