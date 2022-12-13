@@ -112,5 +112,10 @@ namespace HITO2_IPO_NUEVO
             }
             return listado;
         }
+
+        private void cbIdioma_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
