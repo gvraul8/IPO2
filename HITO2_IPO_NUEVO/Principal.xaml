@@ -77,11 +77,13 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="0.05*"/>
+                            <RowDefinition Height="0.025*"/>
                             <RowDefinition Height="0.1*"/>
-                            <RowDefinition Height="0.05*"/>
+                            <RowDefinition Height="0.025*"/>
                             <RowDefinition Height="0.70*"/>
+                            <RowDefinition Height="0.025*"/>
                             <RowDefinition Height="0.1*"/>
+                            <RowDefinition Height="0.025*"/>
                         </Grid.RowDefinitions>
 
                         <ListBox x:Name="ListBoxRutas" SelectionChanged="PrintText" SelectionMode="Single" Grid.Row="3" Grid.Column="1"/>
@@ -157,6 +159,84 @@
                             </Grid>
                             
                         </GroupBox>
+
+                        <Grid Grid.Row="1" Grid.Column="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.05*"/>
+                                <ColumnDefinition Width="0.25*"/>
+                                <ColumnDefinition Width="0.05*"/>
+                                <ColumnDefinition Width="0.25*"/>
+                                <ColumnDefinition Width="0.05*"/>
+                                <ColumnDefinition Width="0.25*"/>
+                                <ColumnDefinition Width="0.05*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.15*"/>
+                                <RowDefinition Height="0.70*"/>
+                                <RowDefinition Height="0.15*"/>
+                            </Grid.RowDefinitions>
+
+                            <Button x:Name ="bt_anadir" Height="Auto" Grid.Row="1"  Grid.Column="1" VerticalAlignment="Top" Background="#FF423F3F" Foreground="White" Width="Auto" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/Imagenes/add.png" Width="15" />
+                                    <TextBlock Margin="10,0,0,0" VerticalAlignment="Center"  Width="Auto"><Run Text="Añadir"/></TextBlock>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name ="bt_editar" Height="Auto" Grid.Row="1"  Grid.Column="3" VerticalAlignment="Top" Background="#FF423F3F" Foreground="White" Width="Auto" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Width="15" Source="/Imagenes/edit.png"  />
+                                    <TextBlock Margin="10,0,0,0" VerticalAlignment="Center"  Width="Auto"><Run Text="Editar"/></TextBlock>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name ="bt_eliminar" Height="Auto" Grid.Row="1"  Grid.Column="5" VerticalAlignment="Top" Background="#FF423F3F" Foreground="White" Width="Auto" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/Imagenes/delete.png"  Width="15" />
+                                    <TextBlock Margin="10,0,0,0" VerticalAlignment="Center"  Width="Auto"><Run Text="Eliminar"/></TextBlock>
+                                </StackPanel>
+                            </Button>
+
+                        </Grid>
+
+                        <Grid Grid.Row="5" Grid.Column="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.05*"/>
+                                <ColumnDefinition Width="0.25*"/>
+                                <ColumnDefinition Width="0.05*"/>
+                                <ColumnDefinition Width="0.25*"/>
+                                <ColumnDefinition Width="0.05*"/>
+                                <ColumnDefinition Width="0.25*"/>
+                                <ColumnDefinition Width="0.05*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.15*"/>
+                                <RowDefinition Height="0.70*"/>
+                                <RowDefinition Height="0.15*"/>
+                            </Grid.RowDefinitions>
+
+                            <Button x:Name ="bt_anadirs" Height="Auto" Grid.Row="1"  Grid.Column="1" VerticalAlignment="Top" Background="ForestGreen" Foreground="Black" Width="Auto" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/Imagenes/save.png" Width="15" />
+                                    <TextBlock Margin="10,0,0,0" VerticalAlignment="Center"  Width="Auto"><Run Text="Guardar"/></TextBlock>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name ="bt_editars" Height="Auto" Grid.Row="1"  Grid.Column="3" VerticalAlignment="Top" Background="DodgerBlue" Foreground="Black" Width="Auto" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Width="15" Source="/Imagenes/info.png"  />
+                                    <TextBlock Margin="2,0,0,0" VerticalAlignment="Center"  Width="Auto"><Run Text="Editar"/></TextBlock>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name ="bt_eliminars" Height="Auto" Grid.Row="1"  Grid.Column="5" VerticalAlignment="Top" Background="Yellow" Foreground="Black" Width="Auto" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/Imagenes/point-of-interest.png"  Width="15" />
+                                    <TextBlock Margin="10,0,0,0" VerticalAlignment="Center"  Width="Auto"><Run Text="Consultar PDI"/></TextBlock>
+                                </StackPanel>
+                            </Button>
+
+                        </Grid>
 
                     </Grid>
                     

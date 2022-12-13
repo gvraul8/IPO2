@@ -145,5 +145,14 @@
     <Resource Include="Imagenes\spain.png" />
     <Resource Include="Imagenes\united-kingdom.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\point-of-interest.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\save.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

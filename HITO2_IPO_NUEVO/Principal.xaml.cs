@@ -33,7 +33,7 @@ namespace HITO2_IPO_NUEVO
             listadoRutas = CargarContenidoRutasXML();
             foreach (Ruta ruta in listadoRutas)
             {
-                //ListBoxRutas.Items.Add(ruta.Nombre);
+                ListBoxRutas.Items.Add(ruta.Nombre);
             }
             
             
@@ -91,7 +91,35 @@ namespace HITO2_IPO_NUEVO
 
         private void PrintText(object sender, SelectionChangedEventArgs e)
         {
+            int index = ListBoxRutas.SelectedIndex;
+            var rutaAux = listadoRutas[index];
 
+            lb_nombre.Content = rutaAux.Nombre.ToString();
+            tb_origen.Text = rutaAux.Origen.ToString();
+            tb_destino.Text = rutaAux.Origen.ToString();
+            tb_provincia.Text = rutaAux.Provincia.ToString();
+            cb_dificultad.Text = rutaAux.Dificultad.ToString();
+            tb_plazas.Text = rutaAux.PlazasDisponibles.ToString();
+            //tb_material.Text = rutaAux.MaterialNecesario.ToString();
+            //tb_realizaciones.Text = rutaAux.NumeroDeRealizaciones.ToString();
+            tb_fecha.Text = Convert.ToDateTime(rutaAux.Fecha.ToString()).ToString();
+
+            // https://stackoverflow.com/questions/18435829/showing-image-in-wpf-using-the-url-link-from-database
+            var fullFilePath = rutaAux.URL_RUTA.ToString();
+            BitmapImage bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(fullFilePath, UriKind.Absolute);
+            bitmap.EndInit();
+
+            img_ruta.Source = bitmap;
+
+            var fullFilePath2 = rutaAux.URL_INTERES.ToString();
+            BitmapImage bitmap2 = new BitmapImage();
+            bitmap2.BeginInit();
+            bitmap2.UriSource = new Uri(fullFilePath2, UriKind.Absolute);
+            bitmap2.EndInit();
+
+            img_interesRuta.Source = bitmap2;
         }
     }
     
