@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,7 +28,6 @@ namespace HITO2_IPO_NUEVO
         List<Guia> listadoGuias = new List<Guia>();
         List<Oferta> listadoOfertas = new List<Oferta>();
         Usuario user;
-        Boolean visible = true;
 
         public Principal(Usuario u)
         {
@@ -40,10 +39,10 @@ namespace HITO2_IPO_NUEVO
             {
                 ListBoxRutas.Items.Add(ruta.Nombre);
             }
-            
-            
+
             PrintUserData();
-             //----------- A PARTIR DE AQUÍ EL CÓDIGO ES PARA PRUEBAS ----------------
+
+            //----------- A PARTIR DE AQUÍ EL CÓDIGO ES PARA PRUEBAS ----------------
 
             listadoPuntosInteres = CargarContenidoPuntosInteresXML();
             foreach (PuntoInteres puntoInteres in listadoPuntosInteres)
@@ -78,9 +77,8 @@ namespace HITO2_IPO_NUEVO
             {
                 //ListBoxPuntosInteres.Items.Add(oferta.Descripcion); //esto habría que cambiarlo luego
             }
-        }
 
-  
+        }
 
 
         void PrintUserData()
@@ -88,7 +86,8 @@ namespace HITO2_IPO_NUEVO
             lbNombreUsuario.Content = user.Name.ToString(); ;
             lbApellidosUsuario.Content = user.LastName.ToString();
             lbEmailUsuario.Content=user.Email.ToString();  
-      
+           // lbUltimoAccesoUsuario.Content = user.LastLogin.ToString();
+
             var fullFilePath = user.ImgUrl.ToString();
             BitmapImage bitmap = new BitmapImage();
             bitmap.BeginInit();
@@ -102,7 +101,6 @@ namespace HITO2_IPO_NUEVO
             login= new MainWindow();
             login.Show();
             this.Close();
-      
         }
 
         private void PrintText(object sender, SelectionChangedEventArgs e)
@@ -129,7 +127,6 @@ namespace HITO2_IPO_NUEVO
 
             img_ruta.Source = bitmap;
 
-         
             //var fullFilePath2 = rutaAux.URL_INTERES.ToString();
             //BitmapImage bitmap2 = new BitmapImage();
             //bitmap2.BeginInit();
@@ -142,11 +139,8 @@ namespace HITO2_IPO_NUEVO
             bt_editar.IsEnabled = true;
             bt_eliminar.IsEnabled = true;
         }
-        }
 
-
-
-    private List<Ruta> CargarContenidoRutasXML()
+        private List<Ruta> CargarContenidoRutasXML()
         {
             List<Ruta> listado = new List<Ruta>();
             // Cargar contenido de prueba
@@ -347,14 +341,9 @@ namespace HITO2_IPO_NUEVO
             return listado;
         }
 
-    }
-
         private void btn_Ayuda_Click(object sender, RoutedEventArgs e)
         {
-          
             System.Diagnostics.Process.Start("https://github.com/gvraul8/IPO/wiki/AYUDA");
-              
-
         }
     }
     

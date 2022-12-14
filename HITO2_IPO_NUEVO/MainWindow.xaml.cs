@@ -91,7 +91,8 @@ namespace HITO2_IPO_NUEVO
             foreach (XmlNode node in doc.DocumentElement.ChildNodes)
             {
                 //  Usuario(string user, string pass, string name, string lastName, string email, DateTime lastLogin, Uri imgUrl)
-                var nuevoUsuario = new Usuario("", "","","","", DateTime.MinValue);
+            
+                var nuevoUsuario = new Usuario("", "","","","", DateTime.MinValue,"");
                 nuevoUsuario.User = node.Attributes["User"].Value;
                 nuevoUsuario.Pass = node.Attributes["Pass"].Value;
                 nuevoUsuario.Name = node.Attributes["Name"].Value;
