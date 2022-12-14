@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PuntoInteres>
+	<PuntoInteres Nombre="Santuario de la Virgen de las Nieves" Descripcion="" NombreRuta="Ruta de Valhondo" 
+				  Imagen="https://es.wikipedia.org/wiki/Archivo:Santa_Cruz_-_Virgen_de_las_Nieves_01_ies.jpg" />
+	<PuntoInteres Nombre="Mirador Ahi De Cara" Descripcion="" NombreRuta="Senda del Boquerón del Estena" 
+				  Imagen="https://lh3.googleusercontent.com/p/AF1QipNBx3SuGi4SjQh0EB5Gi6DhkGP7L9cvWzBnPOWx=s1360-w1360-h1020" />
+	<PuntoInteres Nombre="Bosque Finlandés de Rascafría" Descripcion="" NombreRuta="Ruta de Pradera de Ordesa" 
+				  Imagen="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcTQ2--yrJoe1ik8J5K2dJUOaTK36PO00ZhffgUKrWWQATAfPk7SgIFc9EEx6UHo3jFH1HFQmqAivqObcIeRtpJH3g" />
+</PuntoInteres>
