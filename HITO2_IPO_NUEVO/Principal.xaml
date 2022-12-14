@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HITO2_IPO_NUEVO"
         mc:Ignorable="d"
-        Title="Principal" Height="349" Width="650">
+     
+        Title="Principal" Height="800" Width="1300"
+        WindowStartupLocation="CenterScreen">
 
     <Grid x:Name="pnPrincipal">
 
@@ -64,6 +66,10 @@
                 <Button x:Name="btCerrarSesion" Content="Cerrar sesión"  Background="#FFC54545" Foreground="White" 
                     BorderBrush="#FFC54545" Click="btCerrarSesion_Click" />
             </Viewbox>
+
+            <Button x:Name="btn_Ayuda" Grid.Column="1"  Background="Transparent" BorderBrush="Transparent" ToolTip="Pulse para obtener ayuda" Click="btn_Ayuda_Click" HorizontalAlignment="Left" Height="31" Margin="10,10,0,0" VerticalAlignment="Top" Width="36">
+                <Image Source="/Imagenes/pregunta.png" />
+            </Button>
 
         </Grid>
 
@@ -652,8 +658,12 @@
                     </Grid>
 
                 </TabItem>
+
+
             </TabControl>
+
         </Grid>
+
     </Grid>
 
 </Window>

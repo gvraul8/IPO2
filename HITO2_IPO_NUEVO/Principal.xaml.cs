@@ -124,6 +124,14 @@ namespace HITO2_IPO_NUEVO
             img_interesRuta.Source = bitmap2;
         }
 
+        private void btn_Ayuda_Click(object sender, RoutedEventArgs e)
+        {
+          
+                   
+            System.Diagnostics.Process.Start("https://github.com/gvraul8/IPO/wiki/AYUDA");
+              
+
+        }
     }
     
 }

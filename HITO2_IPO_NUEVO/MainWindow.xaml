@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HITO2_IPO_NUEVO"
         mc:Ignorable="d"
-        Title="IU_LOGIN" Height="800" Width="1300">
+        Title="IU_LOGIN" Height="800" Width="1300"
+
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="121*"/>
@@ -55,40 +57,46 @@
         <Rectangle x:Name="FondoLogin" Grid.Row="2" Grid.Column="2" 
                    Fill="Black" Margin="2,0,0,0" 
                    RadiusX="10" RadiusY="10" Opacity="0.80" Grid.ColumnSpan="4" Grid.RowSpan="6"/>
-        <Label x:Name="lb_usuario" Grid.Column="3" Content="USUARIO" 
+        <Label x:Name="lb_usuario" Grid.Column="3" Content="{DynamicResource lb_usuario}" 
                HorizontalAlignment="Left" Height="37" Grid.Row="3" VerticalAlignment="Top" Width="141" FontSize="20"
                Foreground="#FFFBFAFA"  VerticalContentAlignment="Bottom" HorizontalContentAlignment="Stretch" Margin="10,19,0,0" Grid.RowSpan="2" />
-        <Label x:Name="lb_contrasena" Grid.Column="3" Content="CONTRASEÑA" 
+        <Label x:Name="lb_contrasena" Grid.Column="3" Content="{DynamicResource lb_contrasena}" 
             HorizontalAlignment="Left" Height="37" Margin="10,0,0,0" Grid.Row="5" VerticalAlignment="Center" Width="141" FontSize="20"
             Foreground="#FFFBFAFA"  VerticalContentAlignment="Bottom" HorizontalContentAlignment="Stretch" />
         <TextBox x:Name="tb_usuario" Grid.Row="4" Grid.Column="3" BorderThickness="2" Margin="5,5,18,5" VerticalContentAlignment="Center" KeyDown="tb_usuario_KeyDown" />
         <PasswordBox x:Name="pb_contrasena" Grid.Row="6" Grid.Column="3" PasswordChar="*" BorderThickness="2" Margin="5,5,18,5" 
                 VerticalContentAlignment="Center" IsEnabled="False" KeyDown="pb_contrasena_KeyDown" />
-        <Label x:Name="lb_InciarSesion" Grid.Column="3" Content="Iniciar Sesión" 
+        <Label x:Name="lb_IniciarSesion" Grid.Column="3" Content="{DynamicResource lb_IniciarSesion}" 
             HorizontalAlignment="Left" Height="70" Grid.Row="2" VerticalAlignment="Top" Width="315" FontSize="30"
             Foreground="#FFFBFAFA"  VerticalContentAlignment="Bottom" HorizontalContentAlignment="Stretch" Margin="10,23,0,0" FontWeight="Bold" Grid.RowSpan="2" />
-        <Button x:Name="btn_iniciarSesion" Grid.Column="3" Content="Iniciar Sesión" HorizontalAlignment="Left"
+        <Button x:Name="btn_iniciarSesion" Grid.Column="3"  Content="{DynamicResource btn_iniciarSesion}"  HorizontalAlignment="Left"
                 Height="30" Margin="104,0,0,0" Grid.Row="7" VerticalAlignment="Center" Width="128" Background="#FF6189CF" Foreground="White" Click="btn_iniciarSesion_Click" />
         <Image x:Name="img_icono" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="70" Margin="36,23,0,0" Grid.Row="2"
                VerticalAlignment="Top" Width="114" Source="/Imagenes/loginSenderista.png" Grid.RowSpan="2"/>
-        <Button x:Name="lb_olvidocontrasena" Grid.Column="3" Content="¿Olvidastes tu contraseña?" BorderBrush="Transparent" Background ="Transparent" Foreground="#FFA9C4F3" Height="21" Margin="172,34,18,0" Grid.Row="5" VerticalAlignment="Top" Click="lb_olvidocontrasena_Click" ToolTip="Pulse para restablecer contraseña"/>
-        <Label x:Name="lb_errorCombinacion" Grid.Column="3" Content="Combinación usuario-contraseña incorrecta." HorizontalAlignment="Left" Height="24" Margin="104,51,0,0" Grid.Row="6" VerticalAlignment="Top" Width="229" Foreground= "Red" Grid.RowSpan="2" FontSize="11" Visibility="Collapsed"/>
+        <Button x:Name="lb_olvidocontrasena" Grid.Column="3"  Content="{DynamicResource lb_olvidocontrasena}" BorderBrush="Transparent" Background ="Transparent" Foreground="#FFA9C4F3" Height="21" Margin="172,34,18,0" Grid.Row="5" VerticalAlignment="Top" Click="lb_olvidocontrasena_Click" ToolTip="{DynamicResource toolTipOlvidoContrasena}"/>
+
+        <Label x:Name="lb_errorCombinacion" Grid.Column="3" Content="{DynamicResource lb_errorCombinacion}" HorizontalAlignment="Left" Height="24" Margin="104,51,0,0" Grid.Row="6" VerticalAlignment="Top" Width="229" Foreground= "Red" Grid.RowSpan="2" FontSize="11" Visibility="Collapsed"/>
         <Image x:Name="imgCheckUsuario" Grid.Column="3" HorizontalAlignment="Left" Height="28" Margin="339,17,0,0" Grid.Row="4" VerticalAlignment="Top" Width="28" Grid.ColumnSpan="2"/>
         <Image x:Name="imgCheckContrasena" Grid.Column="3" HorizontalAlignment="Left" Height="28" Margin="339,13,0,0" Grid.Row="6" VerticalAlignment="Top" Width="28" Grid.ColumnSpan="2"/>
-        <ComboBox x:Name="cb_idiomas" Grid.Column="7" HorizontalAlignment="Center" Height="23" VerticalAlignment="Center" Width="70" SelectedIndex ="0" FontWeight="Bold" Background="Black" BorderBrush="Black">
+        <ComboBox x:Name="cb_idiomas" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" Width="70" SelectedIndex ="0" FontWeight="Bold" Background="Black" BorderBrush="Black" SelectionChanged="cbIdioma_SelectionChanged"  ToolTip="{DynamicResource toolTipidioma}" Margin="56,14,0,0">
             <ComboBoxItem Name="cbiEspaniol">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="imagenes/spain.png" Width="15" Height="15"/>
-                    <TextBlock VerticalAlignment="Center" Text="ESP" Margin="5,0" />
+                    <TextBlock VerticalAlignment="Center" Text="{DynamicResource cbiEspaniol}" Margin="5,0" />
                 </StackPanel>
             </ComboBoxItem>
             <ComboBoxItem Name="cbiIngles">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="imagenes/united-kingdom.png" Width="15" Height="15"/>
-                    <TextBlock VerticalAlignment="Center" Text="ING" Margin="5,0" />
+                    <TextBlock  Text="{DynamicResource cbiIngles}" VerticalAlignment="Center"  Margin="5,0" />
                 </StackPanel>
             </ComboBoxItem>
         </ComboBox>
+        <Button x:Name="btn_Ayuda" Grid.Column="0" Margin="10,10,209,99" Background="Transparent" BorderBrush="Transparent" ToolTip="{DynamicResource toolTipAyuda}" Click="btn_Ayuda_Click">
+            <Image Source="/Imagenes/pregunta.png" />
+        </Button>
+
+
 
 
     </Grid>

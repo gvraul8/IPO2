@@ -4,6 +4,11 @@
              xmlns:local="clr-namespace:HITO2_IPO_NUEVO"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="resources/StringResources.es-ES.xaml"/>
+                <ResourceDictionary Source="resources/StringResources.en-UK.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

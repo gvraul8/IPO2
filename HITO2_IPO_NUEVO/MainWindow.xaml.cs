@@ -31,7 +31,8 @@ namespace HITO2_IPO_NUEVO
         public MainWindow()
         {
             InitializeComponent();
-  
+            App.DefineIdioma("es-ES");
+
         }
 
         private void tb_usuario_KeyDown(object sender, KeyEventArgs e)
@@ -76,7 +77,8 @@ namespace HITO2_IPO_NUEVO
 
         private void lb_olvidocontrasena_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Se ha enviado un correo de recuperación al correo asociado con el nombre de usuario introducido.");
+            MessageBox.Show((String) Resources["OlvidoContrasenamensaje"]);
+           
         }
 
 
@@ -108,10 +110,42 @@ namespace HITO2_IPO_NUEVO
             }
             return listado;
         }
-
+        
         private void cbIdioma_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+           
+                string idioma = "";
+                int cbi = cb_idiomas.SelectedIndex;
+                switch (cbi)
+                {
+                    case 0:
+                        idioma = "es-ES";
+                        break;
+                    case 1:
+                        idioma = "en-UK";
+                        break;
+                }
+                Resources.MergedDictionaries.Add(App.DefineIdioma(idioma));
+            
+        }
 
+        private void btn_Ayuda_Click(object sender, RoutedEventArgs e)
+        {
+            string idioma = "";
+            int cbi = cb_idiomas.SelectedIndex;
+            switch (cbi)
+            {
+                case 0:
+                    idioma = "es-ES";
+                    System.Diagnostics.Process.Start("https://github.com/gvraul8/IPO/wiki/AYUDA");
+                    break;
+                case 1:
+                    idioma = "en-UK";
+                    System.Diagnostics.Process.Start("https://github.com/gvraul8/IPO/wiki/HELP");
+                    break;
+            }
+
+           
         }
     }
 }

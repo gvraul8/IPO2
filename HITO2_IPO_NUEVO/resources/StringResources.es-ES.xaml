@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <sys:String x:Key="lb_usuario">USUARIO</sys:String>
+    <sys:String x:Key="lb_contrasena">CONTRASEÑA</sys:String>
+    <sys:String x:Key="lb_IniciarSesion">Iniciar Sesión</sys:String>
+    <sys:String x:Key="lb_olvidocontrasena">¿Olvidaste tu contraseña?</sys:String>
+    <sys:String x:Key="lb_errorCombinacion">Combinación usuario-contraseña incorrecta</sys:String>
+    <sys:String x:Key="btn_iniciarSesion">Iniciar Sesión</sys:String>
+    <sys:String x:Key="cbiEspaniol">ESP</sys:String>
+    <sys:String x:Key="cbiIngles">ING-UK</sys:String>
+	<sys:String x:Key="OlvidoContrasenamensaje">Se ha enviado un correo de recuperación al correo asociado con el nombre de usuario introducido.</sys:String>
+	<sys:String x:Key="toolTipOlvidoContrasena">Pulse para restablecer contraseña.</sys:String>
+	<sys:String x:Key="toolTipidioma">Pulse para seleccionar idioma.</sys:String>
+    <sys:String x:Key="toolTipAyuda">Pulse para obtener ayuda.</sys:String>
+
+</ResourceDictionary>
