@@ -79,10 +79,6 @@ namespace HITO2_IPO_NUEVO
             MessageBox.Show("Se ha enviado un correo de recuperación al correo asociado con el nombre de usuario introducido.");
         }
 
-        private void btn_idioma_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private List<Usuario> CargarContenidoXML()
         {

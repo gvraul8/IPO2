@@ -14,7 +14,7 @@
             <ColumnDefinition Width="0.8*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid x:Name="gridDatosUsuario" Grid.Column="0">
+        <Grid x:Name="gridDatosUsuario" Grid.Column="0" Visibility="Visible">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.05*"/>
                 <ColumnDefinition Width="0.90*"/>
@@ -29,7 +29,6 @@
                 <RowDefinition Height="0.05*"/>
             </Grid.RowDefinitions>
             <Image x:Name="imgUsuario" HorizontalAlignment="Center" Height="Auto" VerticalAlignment="Center" Width="Auto" Grid.Column="1" Grid.Row="1" Source="/Imagenes/fotoUsuario.jpg"/>
-
             <Grid x:Name="gridLabelsUsuario"  HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="Auto" Grid.Column="1" Grid.Row="3">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.16*"/>
@@ -40,24 +39,38 @@
                     <RowDefinition Height="0.16*"/>
                 </Grid.RowDefinitions>
 
-                <Label x:Name="lbNombre"  Content="Nombre" Height="Auto" VerticalAlignment="Top" Grid.Row="0" HorizontalAlignment="Left"/>
-                <Label x:Name="lbNombreUsuario"  Content="Nombre" FontWeight="Bold"  Height="Auto" VerticalAlignment="Top" Grid.Row="1" HorizontalAlignment="Left"/>
+                <Viewbox Height="Auto" VerticalAlignment="Top" Grid.Row="0" HorizontalAlignment="Left">
+                    <Label x:Name="lbNombre"  Content="Nombre" />
+                </Viewbox>
+                <Viewbox  Height="Auto" VerticalAlignment="Top" Grid.Row="1" HorizontalAlignment="Left">
+                    <Label x:Name="lbNombreUsuario"  Content="Nombre" FontWeight="Bold"/>
+                </Viewbox>
+                <Viewbox Height="Auto" VerticalAlignment="Top" Grid.Row="2" HorizontalAlignment="Left">
+                    <Label x:Name="lbApellidos"  Content="Apellidos"/>
+                </Viewbox>
+                <Viewbox Height="Auto" VerticalAlignment="Top" Grid.Row="3" HorizontalAlignment="Left">
+                    <Label x:Name="lbApellidosUsuario"  Content="Apellidos"  FontWeight="Bold"/>
+                </Viewbox>
+                <Viewbox Height="Auto" VerticalAlignment="Top" Grid.Row="4" HorizontalAlignment="Left" >
+                    <Label x:Name="lbEmail"  Content="Email"  />
+                </Viewbox>
+                <Viewbox VerticalAlignment="Top" Grid.Row="5" HorizontalAlignment="Left">
+                    <Label x:Name="lbEmailUsuario"  Content="Nombre@email.com"  FontWeight="Bold" Height="Auto" />
+                </Viewbox>
 
-                <Label x:Name="lbApellidos"  Content="Apellidos"  Height="Auto" VerticalAlignment="Top" Grid.Row="2" HorizontalAlignment="Left"/>
-                <Label x:Name="lbApellidosUsuario"  Content="Apellidos"  FontWeight="Bold"  Height="Auto" VerticalAlignment="Top" Grid.Row="3" HorizontalAlignment="Left"/>
-
-                <Label x:Name="lbEmail"  Content="Email"  Height="Auto" VerticalAlignment="Top" Grid.Row="4" HorizontalAlignment="Left" />
-                <Label x:Name="lbEmailUsuario"  Content="Nombre@email.com"  FontWeight="Bold" Height="Auto" VerticalAlignment="Top" Grid.Row="5" HorizontalAlignment="Left"/>
             </Grid>
 
-            <Button x:Name="btCerrarSesion" Content="Cerrar sesión" Grid.Row="4" Grid.Column="1" Background="#FFC54545" Foreground="White" 
-                    BorderBrush="#FFC54545" Click="btCerrarSesion_Click" HorizontalAlignment="Center" Width="Auto" Height="Auto" VerticalAlignment="Center"/>
+            <Viewbox Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" Width="Auto" Height="Auto" VerticalAlignment="Center" MaxHeight="60" MaxWidth="120">
+                <Button x:Name="btCerrarSesion" Content="Cerrar sesión"  Background="#FFC54545" Foreground="White" 
+                    BorderBrush="#FFC54545" Click="btCerrarSesion_Click" />
+            </Viewbox>
 
         </Grid>
 
-
-
         <Grid x:Name="gridContenido" Grid.Column="2" >
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
             <TabControl x:Name="tcPestanas" Background="WhiteSmoke" Width="auto">
                 <TabItem x:Name="tiRutas" Header="Rutas" IsSelected="True" >
                     <TabItem.Background>
@@ -104,9 +117,12 @@
                                     <RowDefinition Height="0.05*"/>
                                 </Grid.RowDefinitions>
 
-                                <Label x:Name="lb_nombre" Content="Nombre de la ruta"  FontWeight="Bold" FontSize="20"  Grid.Column="1" Grid.ColumnSpan="4" Height="33" VerticalAlignment="Center" Grid.Row="1"/>
+                                <Viewbox Grid.Column="1" Grid.ColumnSpan="4" Height="Auto" VerticalAlignment="Center" Grid.Row="1">
+                                    <Label x:Name="lb_nombre" Content="Nombre de la ruta"  FontWeight="Bold" FontSize="24"/>
+                                </Viewbox>
 
-                                <Grid Grid.Column="1" Grid.Row="2">
+
+                                <Grid Grid.Column="1" Grid.Row="2" >
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="0.07*"/>
                                         <RowDefinition Height="0.07*"/>
@@ -132,7 +148,7 @@
                                     <TextBox x:Name="tb_provincia" TextWrapping="Wrap" IsReadOnly="True" Grid.Row="5" VerticalAlignment="Top" Grid.ColumnSpan="2" />
 
                                     <TextBlock x:Name="lb_fecha" TextWrapping="Wrap" Text="Fecha y hora" Grid.Row="6" Grid.ColumnSpan="2" />
-                                    <TextBox x:Name="tb_fecha" TextWrapping="Wrap" IsReadOnly="True" Grid.Row="7" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                                    <DatePicker x:Name="dp_fecha" Grid.Row="7" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
 
                                     <TextBlock x:Name="lb_dificultad" TextWrapping="Wrap" Text="Dificultad" Grid.Row="8" Grid.ColumnSpan="2" Grid.RowSpan="2" />
                                     <TextBox x:Name="tb_dificultad"  IsReadOnly="True" Grid.Row="9" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
@@ -157,7 +173,7 @@
                                 </Grid>
 
                             </Grid>
-                            
+
                         </GroupBox>
 
                         <Grid Grid.Row="1" Grid.Column="3">
@@ -176,21 +192,21 @@
                                 <RowDefinition Height="0.15*"/>
                             </Grid.RowDefinitions>
 
-                            <Button x:Name ="bt_anadir" Height="Auto" Grid.Row="1"  Grid.Column="1" VerticalAlignment="Top" Background="#FF423F3F" Foreground="White" Width="Auto" >
+                            <Button x:Name ="bt_anadir" Height="Auto" Grid.Row="1"  Grid.Column="1" VerticalAlignment="Top" Background="#FF423F3F" Foreground="White" Width="Auto" MaxHeight="60" MaxWidth="120" >
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="/Imagenes/add.png" Width="15" />
                                     <TextBlock Margin="10,0,0,0" VerticalAlignment="Center"  Width="Auto"><Run Text="Añadir"/></TextBlock>
                                 </StackPanel>
                             </Button>
 
-                            <Button x:Name ="bt_editar" Height="Auto" Grid.Row="1"  Grid.Column="3" VerticalAlignment="Top" Background="#FF423F3F" Foreground="White" Width="Auto" >
+                            <Button x:Name ="bt_editar" Height="Auto" Grid.Row="1"  Grid.Column="3" VerticalAlignment="Top" Background="#FF423F3F" Foreground="White" Width="Auto" MaxHeight="60" MaxWidth="120" >
                                 <StackPanel Orientation="Horizontal">
                                     <Image Width="15" Source="/Imagenes/edit.png"  />
                                     <TextBlock Margin="10,0,0,0" VerticalAlignment="Center"  Width="Auto"><Run Text="Editar"/></TextBlock>
                                 </StackPanel>
                             </Button>
 
-                            <Button x:Name ="bt_eliminar" Height="Auto" Grid.Row="1"  Grid.Column="5" VerticalAlignment="Top" Background="#FF423F3F" Foreground="White" Width="Auto" >
+                            <Button x:Name ="bt_eliminar" Height="Auto" Grid.Row="1"  Grid.Column="5" VerticalAlignment="Top" Background="#FF423F3F" Foreground="White" Width="Auto" MaxHeight="60" MaxWidth="120" >
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="/Imagenes/delete.png"  Width="15" />
                                     <TextBlock Margin="10,0,0,0" VerticalAlignment="Center"  Width="Auto"><Run Text="Eliminar"/></TextBlock>
@@ -239,24 +255,8 @@
                         </Grid>
 
                     </Grid>
-                    
+
                 </TabItem>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                 <TabItem x:Name="tiGuia" Header="Guías senderistas">
                     <TabItem.Background>
@@ -267,16 +267,390 @@
                     </TabItem.Background>
                     <Grid>
                         <!-- COPIAR Y PEGAR ELEMENTOS QUE QUIERAS DENTRO DE LA PESTAÑA GUIAS DESDE LINEA 71 A 240-->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.05*"/>
+                            <ColumnDefinition Width="0.25*"/>
+                            <ColumnDefinition Width="0.05*"/>
+                            <ColumnDefinition Width="0.50*"/>
+                            <ColumnDefinition Width="0.05*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.025*"/>
+                            <RowDefinition Height="0.1*"/>
+                            <RowDefinition Height="0.025*"/>
+                            <RowDefinition Height="0.50*"/>
+                            <RowDefinition Height="0.35*"/>
+                            <RowDefinition Height="0.025*"/>
+                        </Grid.RowDefinitions>
+
+                        <ListBox x:Name="ListBoxGuias" SelectionChanged="PrintText" SelectionMode="Single" Grid.Row="3" Grid.Column="1" Grid.RowSpan="2"/>
+
+                        <GroupBox x:Name="gb_guias" Grid.Column="3" Background="White" Grid.Row="3" >
+                            <Grid Height="Auto" Width="Auto">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.05*"/>
+                                    <ColumnDefinition Width="0.40*"/>
+                                    <ColumnDefinition Width="0.05*"/>
+                                    <ColumnDefinition Width="0.45*"/>
+                                    <ColumnDefinition Width="0.05*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.05*"/>
+                                    <RowDefinition Height="0.1*"/>
+                                    <RowDefinition Height="0.8*"/>
+                                    <RowDefinition Height="0.05*"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBox x:Name="lb_nombre_guia" Text="Nombre del guía"  FontWeight="Bold" FontSize="20"  Grid.Column="1" Grid.ColumnSpan="4" Height="33" VerticalAlignment="Center" Grid.Row="1"/>
+
+                                <Grid Grid.Column="1" Grid.Row="2">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="0.07*"/>
+                                        <RowDefinition Height="0.07*"/>
+                                        <RowDefinition Height="0.07*"/>
+                                        <RowDefinition Height="0.07*"/>
+                                        <RowDefinition Height="0.07*"/>
+                                        <RowDefinition Height="0.07*"/>
+                                        <RowDefinition Height="0.07*"/>
+                                        <RowDefinition Height="0.07*"/>
+
+                                    </Grid.RowDefinitions>
+
+
+                                    <TextBlock x:Name="lb_idomas" TextWrapping="Wrap" Text="Idioma" Grid.Row="0" Grid.ColumnSpan="2"  Grid.RowSpan="2" />
+                                    <ComboBox x:Name="cb_idiomas" IsReadOnly="True" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="2" />
+
+                                    <TextBlock x:Name="lb_telefonoguia" TextWrapping="Wrap" Text="Teléfono" Grid.Row="2" Grid.ColumnSpan="2" />
+                                    <TextBox x:Name="tb_telefonoguia" TextWrapping="Wrap" IsReadOnly="True" Grid.Row="3" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+
+                                    <TextBlock x:Name="lb_correoguia" TextWrapping="Wrap" Text="Correo electrónico" Grid.Row="4" Grid.ColumnSpan="2" Grid.RowSpan="2" />
+                                    <TextBox x:Name="tb_correoguia"  IsReadOnly="True" Grid.Row="5" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+
+                                    <TextBlock x:Name="lb_disponibilidad" TextWrapping="Wrap" Text="Disponibilidad" Grid.Row="6" Grid.ColumnSpan="2" />
+                                    <TextBox x:Name="tb_disponibilidad" TextWrapping="Wrap" IsReadOnly="True" Grid.Row="7" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+
+                                </Grid>
+
+                                <Image x:Name="img_guia" Grid.Column="3" Grid.Row="2"/>
+
+
+                            </Grid>
+
+                        </GroupBox>
+
+                        <Grid Grid.Row="1" Grid.Column="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.05*"/>
+                                <ColumnDefinition Width="0.25*"/>
+                                <ColumnDefinition Width="0.05*"/>
+                                <ColumnDefinition Width="0.25*"/>
+                                <ColumnDefinition Width="0.05*"/>
+                                <ColumnDefinition Width="0.25*"/>
+                                <ColumnDefinition Width="0.05*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.15*"/>
+                                <RowDefinition Height="0.70*"/>
+                                <RowDefinition Height="0.15*"/>
+                            </Grid.RowDefinitions>
+
+                            <Button x:Name ="bt_anadirGuia" Height="Auto" Grid.Row="1"  Grid.Column="1" VerticalAlignment="Top" Background="#FF423F3F" Foreground="White" Width="Auto" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/Imagenes/add.png" Width="15" />
+                                    <TextBlock Margin="10,0,0,0" VerticalAlignment="Center"  Width="Auto"><Run Text="Añadir"/></TextBlock>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name ="bt_editarGuia" Height="Auto" Grid.Row="1"  Grid.Column="3" VerticalAlignment="Top" Background="#FF423F3F" Foreground="White" Width="Auto" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Width="15" Source="/Imagenes/edit.png"  />
+                                    <TextBlock Margin="10,0,0,0" VerticalAlignment="Center"  Width="Auto"><Run Text="Editar"/></TextBlock>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name ="bt_eliminarGuia" Height="Auto" Grid.Row="1"  Grid.Column="5" VerticalAlignment="Top" Background="#FF423F3F" Foreground="White" Width="Auto" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/Imagenes/delete.png"  Width="15" />
+                                    <TextBlock Margin="10,0,0,0" VerticalAlignment="Center"  Width="Auto"><Run Text="Eliminar"/></TextBlock>
+                                </StackPanel>
+                            </Button>
+
+                        </Grid>
+                        <GroupBox x:Name="gb_historialrutas" Grid.Column="3" Background="White" Grid.Row="4" >
+                            <Grid Height="Auto" Width="Auto">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.05*"/>
+                                    <ColumnDefinition Width="0.3*"/>
+                                    <ColumnDefinition Width="0.05*"/>
+                                    <ColumnDefinition Width="0.55*"/>
+                                    <ColumnDefinition Width="0.05*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.05*"/>
+                                    <RowDefinition Height="0.1*"/>
+                                    <RowDefinition Height="0.1*"/>
+                                    <RowDefinition Height="0.7*"/>
+                                    <RowDefinition Height="0.05*"/>
+                                </Grid.RowDefinitions>
+                                <Viewbox Grid.Row="1" Grid.Column="3" Grid.RowSpan="2" HorizontalAlignment="Center">
+                                    <TextBlock x:Name="lb_historial" TextWrapping="Wrap" Text="HISTORIAL DE RUTAS"  FontWeight="Bold" TextAlignment="Center"></TextBlock>
+                                </Viewbox>
+
+                                <Viewbox Grid.Column="1" Grid.Row="1" Width="Auto" Height="Auto" HorizontalAlignment="Left">
+                                    <CheckBox x:Name="cb_elegirrealizada" Content="Rutas Realizadas" ></CheckBox>
+                                </Viewbox>
+                                <Viewbox Grid.Column="1" Grid.Row="2" Width="Auto" Height="Auto" HorizontalAlignment="Left">
+                                    <CheckBox x:Name="cb_elegirplanificada"  Content="Rutas Planificadas" ></CheckBox>
+                                </Viewbox>
+
+                                <ListBox  x:Name="lb_rutasrealpla" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" ></ListBox>
+
+                            </Grid>
+
+                        </GroupBox>
+
+
                     </Grid>
-                   
+
+
                 </TabItem>
                 <TabItem x:Name="tiExcursionista" Header="Excursionistas">
                     <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.05*"/>
+                            <ColumnDefinition Width="0.25*"/>
+                            <ColumnDefinition Width="0.05*"/>
+                            <ColumnDefinition Width="0.50*"/>
+                            <ColumnDefinition Width="0.05*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.025*"/>
+                            <RowDefinition Height="0.1*"/>
+                            <RowDefinition Height="0.025*"/>
+                            <RowDefinition Height="0.50*"/>
+                            <RowDefinition Height="0.35*"/>
+                            <RowDefinition Height="0.025*"/>
+                        </Grid.RowDefinitions>
+
+                        <ListBox x:Name="ListBoxExcursionistas" SelectionChanged="PrintText" SelectionMode="Single" Grid.Row="3" Grid.Column="1" Grid.RowSpan="2"/>
+
+                        <GroupBox x:Name="gb_excursionistas" Grid.Column="3" Background="White" Grid.Row="3" >
+                            <Grid Height="Auto" Width="Auto">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.05*"/>
+                                    <ColumnDefinition Width="0.40*"/>
+                                    <ColumnDefinition Width="0.05*"/>
+                                    <ColumnDefinition Width="0.45*"/>
+                                    <ColumnDefinition Width="0.05*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.05*"/>
+                                    <RowDefinition Height="0.1*"/>
+                                    <RowDefinition Height="0.8*"/>
+                                    <RowDefinition Height="0.05*"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBox x:Name="lb_nombre_excursionista" Text="Nombre del excursionista"  FontWeight="Bold" FontSize="20"  Grid.Column="1" Grid.ColumnSpan="4" Height="33" VerticalAlignment="Center" Grid.Row="1"/>
+
+                                <Grid Grid.Column="1" Grid.Row="2">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="0.07*"/>
+                                        <RowDefinition Height="0.07*"/>
+                                        <RowDefinition Height="0.07*"/>
+                                        <RowDefinition Height="0.07*"/>
+                                        <RowDefinition Height="0.07*"/>
+                                        <RowDefinition Height="0.07*"/>
+                                        <RowDefinition Height="0.07*"/>
+                                        <RowDefinition Height="0.07*"/>
+
+                                    </Grid.RowDefinitions>
+
+
+                                    <TextBlock x:Name="lb_edad" TextWrapping="Wrap" Text="Edad" Grid.Row="0" Grid.ColumnSpan="2"  Grid.RowSpan="2" />
+                                    <TextBox x:Name="tb_edad" TextWrapping="Wrap" IsReadOnly="True" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+
+                                    <TextBlock x:Name="lb_telefonoexcursionista" TextWrapping="Wrap" Text="Teléfono" Grid.Row="2" Grid.ColumnSpan="2" />
+                                    <TextBox x:Name="tb_telefonoexcursionista" TextWrapping="Wrap" IsReadOnly="True" Grid.Row="3" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+
+                                    <TextBlock x:Name="lb_correoexcursionista" TextWrapping="Wrap" Text="Correo electrónico" Grid.Row="4" Grid.ColumnSpan="2" Grid.RowSpan="2" />
+                                    <TextBox x:Name="tb_correoexcursionista"  IsReadOnly="True" Grid.Row="5" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                                    <CheckBox x:Name="cb_ofertas" Content="Quiero recibir ofertas"  Grid.Row="6" Grid.RowSpan="2" ></CheckBox>
+
+                                </Grid>
+
+                                <Image x:Name="img_excursionista" Grid.Column="3" Grid.Row="2"/>
+
+
+                            </Grid>
+
+                        </GroupBox>
+
+                        <Grid Grid.Column="3" Margin="0,7,0,0" Grid.RowSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.05*"/>
+                                <ColumnDefinition Width="0.25*"/>
+                                <ColumnDefinition Width="0.05*"/>
+                                <ColumnDefinition Width="0.25*"/>
+                                <ColumnDefinition Width="0.05*"/>
+                                <ColumnDefinition Width="0.25*"/>
+                                <ColumnDefinition Width="0.05*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.15*"/>
+                                <RowDefinition Height="0.70*"/>
+                                <RowDefinition Height="0.15*"/>
+                            </Grid.RowDefinitions>
+
+                            <Button x:Name ="bt_anadirExcursionista" Height="Auto" Grid.Row="1"  Grid.Column="1" VerticalAlignment="Top" Background="#FF423F3F" Foreground="White" Width="Auto" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/Imagenes/add.png" Width="15" />
+                                    <TextBlock Margin="10,0,0,0" VerticalAlignment="Center"  Width="Auto"><Run Text="Añadir"/></TextBlock>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name ="bt_editarExcursionista" Height="Auto" Grid.Row="1"  Grid.Column="3" VerticalAlignment="Top" Background="#FF423F3F" Foreground="White" Width="Auto" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Width="15" Source="/Imagenes/edit.png"  />
+                                    <TextBlock Margin="10,0,0,0" VerticalAlignment="Center"  Width="Auto"><Run Text="Editar"/></TextBlock>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name ="bt_eliminarExcursionista" Height="Auto" Grid.Row="1"  Grid.Column="5" VerticalAlignment="Top" Background="#FF423F3F" Foreground="White" Width="Auto" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/Imagenes/delete.png"  Width="15" />
+                                    <TextBlock Margin="10,0,0,0" VerticalAlignment="Center"  Width="Auto"><Run Text="Eliminar"/></TextBlock>
+                                </StackPanel>
+                            </Button>
+
+                        </Grid>
+                        <GroupBox x:Name="gb_historialrutasExcursionista" Grid.Column="3" Background="White" Grid.Row="4" >
+                            <Grid Height="Auto" Width="Auto">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.05*"/>
+                                    <ColumnDefinition Width="0.3*"/>
+                                    <ColumnDefinition Width="0.05*"/>
+                                    <ColumnDefinition Width="0.55*"/>
+                                    <ColumnDefinition Width="0.05*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.05*"/>
+                                    <RowDefinition Height="0.1*"/>
+                                    <RowDefinition Height="0.1*"/>
+                                    <RowDefinition Height="0.7*"/>
+                                    <RowDefinition Height="0.05*"/>
+                                </Grid.RowDefinitions>
+                                <Viewbox Grid.Row="1" Grid.Column="3" Grid.RowSpan="2" HorizontalAlignment="Center">
+                                    <TextBlock x:Name="lb_historialExcursionista" TextWrapping="Wrap" Text="HISTORIAL DE RUTAS"  FontWeight="Bold" TextAlignment="Center"></TextBlock>
+                                </Viewbox>
+
+                                <Viewbox Grid.Column="1" Grid.Row="1" Width="Auto" Height="Auto" HorizontalAlignment="Left">
+                                    <CheckBox x:Name="cb_elegirrealizadaExcursionista" Content="Rutas Realizadas" ></CheckBox>
+                                </Viewbox>
+                                <Viewbox Grid.Column="1" Grid.Row="2" Width="Auto" Height="Auto" HorizontalAlignment="Left">
+                                    <CheckBox x:Name="cb_elegirplanificadaExcursionista"  Content="Rutas Planificadas" ></CheckBox>
+                                </Viewbox>
+
+                                <ListBox  x:Name="lb_rutasrealplaExcursionista" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" ></ListBox>
+
+                            </Grid>
+
+                        </GroupBox>
+
+
                     </Grid>
+
                 </TabItem>
                 <TabItem x:Name="tiOfertas" Header="Ofertas">
                     <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.05*"/>
+                            <ColumnDefinition Width="0.25*"/>
+                            <ColumnDefinition Width="0.05*"/>
+                            <ColumnDefinition Width="0.50*"/>
+                            <ColumnDefinition Width="0.05*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.025*"/>
+                            <RowDefinition Height="0.1*"/>
+                            <RowDefinition Height="0.025*"/>
+                            <RowDefinition Height="0.50*"/>
+                            <RowDefinition Height="0.025*"/>
+                        </Grid.RowDefinitions>
+
+                        <ListBox x:Name="ListBoxOfertas" SelectionChanged="PrintText" SelectionMode="Single" Grid.Row="3" Grid.Column="1"/>
+
+                        <GroupBox x:Name="gb_ofertas" Grid.Column="3" Background="White" Grid.Row="3" >
+                            <Grid Height="Auto" Width="Auto">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.05*"/>
+                                    <ColumnDefinition Width="0.40*"/>
+                                    <ColumnDefinition Width="0.05*"/>
+                                    <ColumnDefinition Width="0.45*"/>
+                                    <ColumnDefinition Width="0.05*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.05*"/>
+                                    <RowDefinition Height="0.1*"/>
+                                    <RowDefinition Height="0.1*"/>
+                                    <RowDefinition Height="0.7*"/>
+                                    <RowDefinition Height="0.05*"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBox x:Name="lb_nombre_oferta" Text="Nombre de la oferta"  FontWeight="Bold" FontSize="20"  Grid.Column="1" Grid.ColumnSpan="4" Height="33" VerticalAlignment="Center" Grid.Row="1"/>
+                                <TextBlock x:Name="lb_descripcionoferta" TextWrapping="Wrap" Text="Descripción" Grid.Row="2" Grid.Column="1" />
+                                <TextBox x:Name="tb_descricpcionoferta" TextWrapping="Wrap" IsReadOnly="True" Grid.Row="3" Grid.Column="1" Height="Auto" Width="Auto"/>
+
+                                <Image x:Name="img_oferta" Grid.Column="3" Grid.Row="2" Grid.RowSpan="2"/>
+
+                            </Grid>
+                        </GroupBox>
+
+                        <Grid Grid.Column="3" Margin="0,7,0,0" Grid.RowSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.05*"/>
+                                <ColumnDefinition Width="0.25*"/>
+                                <ColumnDefinition Width="0.05*"/>
+                                <ColumnDefinition Width="0.25*"/>
+                                <ColumnDefinition Width="0.05*"/>
+                                <ColumnDefinition Width="0.25*"/>
+                                <ColumnDefinition Width="0.05*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.15*"/>
+                                <RowDefinition Height="0.70*"/>
+                                <RowDefinition Height="0.15*"/>
+                            </Grid.RowDefinitions>
+
+                            <Button x:Name ="bt_anadirOferta" Height="Auto" Grid.Row="1"  Grid.Column="1" VerticalAlignment="Top" Background="#FF423F3F" Foreground="White" Width="Auto" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/Imagenes/add.png" Width="15" />
+                                    <TextBlock Margin="10,0,0,0" VerticalAlignment="Center"  Width="Auto"><Run Text="Añadir"/></TextBlock>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name ="bt_editarOferta" Height="Auto" Grid.Row="1"  Grid.Column="3" VerticalAlignment="Top" Background="#FF423F3F" Foreground="White" Width="Auto" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Width="15" Source="/Imagenes/edit.png"  />
+                                    <TextBlock Margin="10,0,0,0" VerticalAlignment="Center"  Width="Auto"><Run Text="Editar"/></TextBlock>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name ="bt_eliminarOferta" Height="Auto" Grid.Row="1"  Grid.Column="5" VerticalAlignment="Top" Background="#FF423F3F" Foreground="White" Width="Auto" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/Imagenes/delete.png"  Width="15" />
+                                    <TextBlock Margin="10,0,0,0" VerticalAlignment="Center"  Width="Auto"><Run Text="Eliminar"/></TextBlock>
+                                </StackPanel>
+                            </Button>
+
+                        </Grid>
+
                     </Grid>
+
                 </TabItem>
             </TabControl>
         </Grid>

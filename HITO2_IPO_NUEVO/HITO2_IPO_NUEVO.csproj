@@ -154,5 +154,8 @@
   <ItemGroup>
     <Resource Include="Imagenes\save.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\flecha.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

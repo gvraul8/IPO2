@@ -24,6 +24,7 @@ namespace HITO2_IPO_NUEVO
         private MainWindow login;
         List<Ruta> listadoRutas = new List<Ruta>();
         Usuario user;
+        Boolean visible = true;
 
         public Principal(Usuario u)
         {
@@ -87,6 +88,7 @@ namespace HITO2_IPO_NUEVO
             login= new MainWindow();
             login.Show();
             this.Close();
+      
         }
 
         private void PrintText(object sender, SelectionChangedEventArgs e)
@@ -102,7 +104,7 @@ namespace HITO2_IPO_NUEVO
             tb_plazas.Text = rutaAux.PlazasDisponibles.ToString();
             //tb_material.Text = rutaAux.MaterialNecesario.ToString();
             //tb_realizaciones.Text = rutaAux.NumeroDeRealizaciones.ToString();
-            tb_fecha.Text = Convert.ToDateTime(rutaAux.Fecha.ToString()).ToString();
+            dp_fecha.Text = Convert.ToDateTime(rutaAux.Fecha.ToString()).ToString();
 
             // https://stackoverflow.com/questions/18435829/showing-image-in-wpf-using-the-url-link-from-database
             var fullFilePath = rutaAux.URL_RUTA.ToString();
@@ -121,6 +123,7 @@ namespace HITO2_IPO_NUEVO
 
             img_interesRuta.Source = bitmap2;
         }
+
     }
     
 }
