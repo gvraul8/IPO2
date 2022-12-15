@@ -16,7 +16,12 @@
             <ColumnDefinition Width="0.8*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid x:Name="gridDatosUsuario" Grid.Column="0" Visibility="Visible">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.05*"/>
+            <RowDefinition Height="0.95*"/>
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="gridDatosUsuario" Grid.Column="0" Grid.Row="1" Visibility="Visible">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.05*"/>
                 <ColumnDefinition Width="0.90*"/>
@@ -66,19 +71,31 @@
                 <Button x:Name="btCerrarSesion" Content="Cerrar sesión"  Background="#FFC54545" Foreground="White" 
                     BorderBrush="#FFC54545" Click="btCerrarSesion_Click" />
             </Viewbox>
-
-            <Button x:Name="btn_Ayuda" Grid.Column="1"  Background="Transparent" BorderBrush="Transparent" ToolTip="Pulse para obtener ayuda" Click="btn_Ayuda_Click" HorizontalAlignment="Left" Height="31" Margin="10,10,0,0" VerticalAlignment="Top" Width="36">
-                <Image Source="/Imagenes/pregunta.png" />
-            </Button>
-
         </Grid>
 
-        <Grid x:Name="gridContenido" Grid.Column="2" >
+
+        <Grid x:Name="gridContenido" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" >
             <Grid.RowDefinitions>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TabControl x:Name="tcPestanas" Background="WhiteSmoke" Width="auto">
-                <TabItem x:Name="tiRutas" Header="Rutas" IsSelected="True" >
+            <TabControl x:Name="tcPestanas" Width="auto">
+                <TabControl.Background>
+                    <ImageBrush ImageSource="Imagenes/fondoTab.jpg" Opacity="0.4"/>
+                </TabControl.Background>
+
+                <TabItem x:Name="tiRutas" IsSelected="True" Width="110" Height="55" FontSize="20">
+                    <TabItem.Header>
+                        <StackPanel Width="100" Height="35">
+                            <Grid Height="35">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.25*"/>
+                                    <ColumnDefinition Width="0.75*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="Imagenes/ruta.png" Grid.Column="0"/>
+                                <TextBlock Text="RUTAS" HorizontalAlignment="Center" Grid.Column="1"/>
+                            </Grid>
+                        </StackPanel>
+                    </TabItem.Header>
                     <TabItem.Background>
                         <LinearGradientBrush EndPoint="0,1">
                             <GradientStop Color="#FFF0F0F0"/>
@@ -87,6 +104,9 @@
                     </TabItem.Background>
 
                     <Grid>
+                        <Grid.Background>
+                            <ImageBrush/>
+                        </Grid.Background>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="0.05*"/>
                             <ColumnDefinition Width="0.25*"/>
@@ -124,7 +144,7 @@
                                 </Grid.RowDefinitions>
 
                                 <Viewbox Grid.Column="1" Grid.ColumnSpan="4" Height="Auto" VerticalAlignment="Center" Grid.Row="1">
-                                    <TextBox x:Name="tb_nombre" Text="Nombre de la ruta"  FontWeight="Bold" FontSize="24"/>
+                                    <TextBox x:Name="tb_nombre" Text="Nombre de la ruta"  FontWeight="Bold" FontSize="24" BorderBrush="Transparent"/>
                                 </Viewbox>
 
 
@@ -264,7 +284,19 @@
 
                 </TabItem>
 
-                <TabItem x:Name="tiGuia" Header="Guías senderistas">
+                <TabItem x:Name="tiGuia" FontSize="20">
+                    <TabItem.Header>
+                        <StackPanel Width="100" Height="35">
+                            <Grid  Height="35">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.25*"/>
+                                    <ColumnDefinition Width="0.75*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="Imagenes/guia.png" Height="35" Grid.Column="0"/>
+                                <TextBlock Text="GUÍAS" HorizontalAlignment="Center" Grid.Column="1"/>
+                            </Grid>
+                        </StackPanel>
+                    </TabItem.Header>
                     <TabItem.Background>
                         <LinearGradientBrush EndPoint="0,1">
                             <GradientStop Color="#FFF0F0F0"/>
@@ -400,7 +432,7 @@
                                     <RowDefinition Height="0.05*"/>
                                 </Grid.RowDefinitions>
                                 <Viewbox Grid.Row="1" Grid.Column="3" Grid.RowSpan="2" HorizontalAlignment="Center">
-                                    <TextBlock x:Name="lb_historial" TextWrapping="Wrap" Text="HISTORIAL DE RUTAS"  FontWeight="Bold" TextAlignment="Center"></TextBlock>
+                                    <TextBlock x:Name="lb_historial" TextWrapping="Wrap" Text="HISTORIAL DE RUTAS"  FontWeight="Bold" TextAlignment="Center"/>
                                 </Viewbox>
 
                                 <ComboBox x:Name="cb_rutasGuias" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Height="28" VerticalAlignment="Top" Width="169" SelectionChanged="ComboBoxRutasGuias_SelectionChanged" RenderTransformOrigin="0.488,1.369" Margin="0,22,0,0" Grid.RowSpan="3" >
@@ -408,7 +440,7 @@
                                     <ComboBoxItem Content="Rutas Realizadas"/>
                                 </ComboBox>
 
-                                <ListBox  x:Name="lb_rutasrealplaGuias" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" ></ListBox>
+                                <ListBox  x:Name="lb_rutasrealplaGuias" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" />
 
                             </Grid>
 
@@ -419,7 +451,19 @@
 
 
                 </TabItem>
-                <TabItem x:Name="tiExcursionista" Header="Excursionistas" Height="22" Margin="-2,-2,-2,0" VerticalAlignment="Top">
+                <TabItem x:Name="tiExcursionista" FontSize="20">
+                    <TabItem.Header>
+                        <StackPanel Width="220" Height="35">
+                            <Grid  Height="35">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.25*"/>
+                                    <ColumnDefinition Width="0.75*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="Imagenes/trekking.png" Grid.Column="0" Height="28" />
+                                <TextBlock Text="EXCURSIONISTAS" HorizontalAlignment="Center" Grid.Column="1"/>
+                            </Grid>
+                        </StackPanel>
+                    </TabItem.Header>
                     <Grid>
 
                         <Grid.ColumnDefinitions>
@@ -566,9 +610,21 @@
 
 
                     </Grid>
-
                 </TabItem>
-                <TabItem x:Name="tiOfertas" Header="Ofertas">
+
+                <TabItem x:Name="tiOfertas" FontSize="20">
+                    <TabItem.Header>
+                        <StackPanel Width="130" Height="35">
+                            <Grid  Height="35">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.25*"/>
+                                    <ColumnDefinition Width="0.75*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="Imagenes/oferta.png" Height="35" Grid.Column="0"/>
+                                <TextBlock Text="OFERTAS" HorizontalAlignment="Center" Grid.Column="1"/>
+                            </Grid>
+                        </StackPanel>
+                    </TabItem.Header>
                     <Grid>
 
                         <Grid.ColumnDefinitions>
@@ -661,8 +717,19 @@
 
                 </TabItem>
 
-                <TabItem x:Name="tiPDIs" Header="PDIs" IsEnabled="False" >
-
+                <TabItem x:Name="tiPDIs" IsEnabled="False" FontSize="20" >
+                    <TabItem.Header>
+                        <StackPanel Width="100" Height="35">
+                            <Grid Height="35">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.25*"/>
+                                    <ColumnDefinition Width="0.75*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="Imagenes/pdi.png" Grid.Column="0"/>
+                                <TextBlock Text="PDIs" HorizontalAlignment="Center" Grid.Column="1"/>
+                            </Grid>
+                        </StackPanel>
+                    </TabItem.Header>
                     <Grid>
 
                         <Grid.ColumnDefinitions>
@@ -757,6 +824,12 @@
 
 
             </TabControl>
+
+            <WrapPanel Grid.Row="0" Margin="987,5,5,726"  Height="{Binding ActualHeight, ElementName=tabItem}" >
+                <Button x:Name="btn_Ayuda" Background="Transparent" BorderBrush="Transparent" ToolTip="Pulse para obtener ayuda" Click="btn_Ayuda_Click" HorizontalAlignment="Right" Height="31"  VerticalAlignment="Top" Width="36">
+                    <Image Source="/Imagenes/pregunta.png" />
+                </Button>
+            </WrapPanel>
 
         </Grid>
 

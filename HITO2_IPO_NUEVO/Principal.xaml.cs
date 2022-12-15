@@ -831,8 +831,6 @@ namespace HITO2_IPO_NUEVO
                 inicializaComponenetesPuntosInteres();
             }
         }
-
-      
     }
 }
     

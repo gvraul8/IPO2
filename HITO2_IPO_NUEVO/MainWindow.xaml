@@ -78,7 +78,7 @@
         <Label x:Name="lb_errorCombinacion" Grid.Column="3" Content="{DynamicResource lb_errorCombinacion}" HorizontalAlignment="Left" Height="24" Margin="104,51,0,0" Grid.Row="6" VerticalAlignment="Top" Width="229" Foreground= "Red" Grid.RowSpan="2" FontSize="11" Visibility="Collapsed"/>
         <Image x:Name="imgCheckUsuario" Grid.Column="3" HorizontalAlignment="Left" Height="28" Margin="339,17,0,0" Grid.Row="4" VerticalAlignment="Top" Width="28" Grid.ColumnSpan="2"/>
         <Image x:Name="imgCheckContrasena" Grid.Column="3" HorizontalAlignment="Left" Height="28" Margin="339,13,0,0" Grid.Row="6" VerticalAlignment="Top" Width="28" Grid.ColumnSpan="2"/>
-        <ComboBox x:Name="cb_idiomas" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" Width="70" SelectedIndex ="0" FontWeight="Bold" Background="Black" BorderBrush="Black" SelectionChanged="cbIdioma_SelectionChanged"  ToolTip="{DynamicResource toolTipidioma}" Margin="56,14,0,0">
+        <ComboBox x:Name="cb_idiomas" Grid.Column="7" HorizontalAlignment="Right" Height="23" VerticalAlignment="Top" Width="70" SelectedIndex ="0" FontWeight="Bold" Background="Black" BorderBrush="Black" SelectionChanged="cbIdioma_SelectionChanged"  ToolTip="{DynamicResource toolTipidioma}" Margin="56,14,25,0">
             <ComboBoxItem Name="cbiEspaniol">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="imagenes/spain.png" Width="15" Height="15"/>
@@ -92,7 +92,7 @@
                 </StackPanel>
             </ComboBoxItem>
         </ComboBox>
-        <Button x:Name="btn_Ayuda" Grid.Column="0" Margin="10,10,209,99" Background="Transparent" BorderBrush="Transparent" ToolTip="{DynamicResource toolTipAyuda}" Click="btn_Ayuda_Click">
+        <Button x:Name="btn_Ayuda" Grid.Column="7" Margin="122,12,100,102" Background="Transparent" BorderBrush="Transparent" ToolTip="{DynamicResource toolTipAyuda}" Click="btn_Ayuda_Click">
             <Image Source="/Imagenes/pregunta.png" />
         </Button>
 

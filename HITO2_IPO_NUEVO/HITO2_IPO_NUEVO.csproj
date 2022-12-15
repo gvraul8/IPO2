@@ -171,5 +171,23 @@
     <Resource Include="Datos\ofertas.xml" />
     <Resource Include="Datos\puntosInteres.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\guia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\trekking.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\ruta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\oferta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\pdi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\fondoTab.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
