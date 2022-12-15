@@ -105,7 +105,7 @@
                             <RowDefinition Height="0.025*"/>
                         </Grid.RowDefinitions>
 
-                        <ListBox x:Name="ListBoxRutas" SelectionChanged="PrintText" SelectionMode="Single" Grid.Row="3" Grid.Column="1"/>
+                        <ListBox x:Name="ListBoxRutas" SelectionChanged="rellenaCasillasRuta" SelectionMode="Single" Grid.Row="3" Grid.Column="1"/>
 
                         <GroupBox x:Name="gb_rutas" Grid.Column="3" Background="White" Grid.Row="3" >
                             <Grid Height="Auto" Width="Auto">
@@ -124,7 +124,7 @@
                                 </Grid.RowDefinitions>
 
                                 <Viewbox Grid.Column="1" Grid.ColumnSpan="4" Height="Auto" VerticalAlignment="Center" Grid.Row="1">
-                                    <Label x:Name="lb_nombre" Content="Nombre de la ruta"  FontWeight="Bold" FontSize="24"/>
+                                    <TextBox x:Name="tb_nombre" Text="Nombre de la ruta"  FontWeight="Bold" FontSize="24"/>
                                 </Viewbox>
 
 
@@ -251,7 +251,7 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button x:Name ="bt_eliminars" Height="Auto" Grid.Row="1"  Grid.Column="5" VerticalAlignment="Top" Background="Yellow" Foreground="Black" Width="Auto" >
+                            <Button x:Name ="bt_consultarPDis" Height="Auto" Grid.Row="1"  Grid.Column="5" VerticalAlignment="Top" Background="Yellow" Foreground="Black" Width="Auto" Click="bt_consultarPDis_Click" >
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="/Imagenes/point-of-interest.png"  Width="15" />
                                     <TextBlock Margin="10,0,0,0" VerticalAlignment="Center"  Width="Auto"><Run Text="Consultar PDI"/></TextBlock>
@@ -290,7 +290,7 @@
                             <RowDefinition Height="0.025*"/>
                         </Grid.RowDefinitions>
 
-                        <ListBox x:Name="ListBoxGuias" SelectionChanged="PrintText" SelectionMode="Single" Grid.Row="3" Grid.Column="1" Grid.RowSpan="2"/>
+                        <ListBox x:Name="ListBoxGuias" SelectionChanged="rellenaCasillasRuta" SelectionMode="Single" Grid.Row="3" Grid.Column="1" Grid.RowSpan="2"/>
 
                         <GroupBox x:Name="gb_guias" Grid.Column="3" Background="White" Grid.Row="3" >
                             <Grid Height="Auto" Width="Auto">
@@ -325,7 +325,7 @@
 
 
                                     <TextBlock x:Name="lb_idomas" TextWrapping="Wrap" Text="Idioma" Grid.Row="0" Grid.ColumnSpan="2"  Grid.RowSpan="2" />
-                                    <ComboBox x:Name="cb_idiomas" IsReadOnly="True" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="2" />
+                                    <TextBox x:Name="tb_idiomas" IsReadOnly="True" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="2" />
 
                                     <TextBlock x:Name="lb_telefonoguia" TextWrapping="Wrap" Text="Teléfono" Grid.Row="2" Grid.ColumnSpan="2" />
                                     <TextBox x:Name="tb_telefonoguia" TextWrapping="Wrap" IsReadOnly="True" Grid.Row="3" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
@@ -421,15 +421,17 @@
 
 
                 </TabItem>
-                <TabItem x:Name="tiExcursionista" Header="Excursionistas">
+                <TabItem x:Name="tiExcursionista" Header="Excursionistas" Height="22" Margin="-2,-2,-2,0" VerticalAlignment="Top">
                     <Grid>
 
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.05*"/>
-                            <ColumnDefinition Width="0.25*"/>
-                            <ColumnDefinition Width="0.05*"/>
-                            <ColumnDefinition Width="0.50*"/>
-                            <ColumnDefinition Width="0.05*"/>
+                            <ColumnDefinition Width="57*"/>
+                            <ColumnDefinition Width="150*"/>
+                            <ColumnDefinition Width="39*"/>
+                            <ColumnDefinition Width="98*"/>
+                            <ColumnDefinition Width="57*"/>
+                            <ColumnDefinition Width="575*"/>
+                            <ColumnDefinition Width="57*"/>
                         </Grid.ColumnDefinitions>
 
                         <Grid.RowDefinitions>
@@ -441,9 +443,9 @@
                             <RowDefinition Height="0.025*"/>
                         </Grid.RowDefinitions>
 
-                        <ListBox x:Name="ListBoxExcursionistas" SelectionChanged="PrintText" SelectionMode="Single" Grid.Row="3" Grid.Column="1" Grid.RowSpan="2"/>
+                        <ListBox x:Name="ListBoxExcursionistas" SelectionChanged="rellenaCasillasExcursionista" SelectionMode="Single" Grid.Row="3" Grid.RowSpan="3" Grid.ColumnSpan="5" Margin="57,0,57,18"/>
 
-                        <GroupBox x:Name="gb_excursionistas" Grid.Column="3" Background="White" Grid.Row="3" >
+                        <GroupBox x:Name="gb_excursionistas" Grid.Column="5" Background="White" Grid.Row="3" Grid.ColumnSpan="2" Margin="0,0,57,0" >
                             <Grid Height="Auto" Width="Auto">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="0.05*"/>
@@ -459,7 +461,7 @@
                                     <RowDefinition Height="0.05*"/>
                                 </Grid.RowDefinitions>
 
-                                <TextBox x:Name="lb_nombre_excursionista" Text="Nombre del excursionista"  FontWeight="Bold" FontSize="20"  Grid.Column="1" Grid.ColumnSpan="4" Height="33" VerticalAlignment="Center" Grid.Row="1"/>
+                                <Label x:Name="lb_nombre_excursionista" Content="Nombre del excursionista"  FontWeight="Bold" FontSize="20"  Grid.Column="1" Grid.ColumnSpan="4" Height="33" VerticalAlignment="Center" Grid.Row="1"/>
 
                                 <Grid Grid.Column="1" Grid.Row="2">
                                     <Grid.RowDefinitions>
@@ -483,7 +485,7 @@
 
                                     <TextBlock x:Name="lb_correoexcursionista" TextWrapping="Wrap" Text="Correo electrónico" Grid.Row="4" Grid.ColumnSpan="2" Grid.RowSpan="2" />
                                     <TextBox x:Name="tb_correoexcursionista"  IsReadOnly="True" Grid.Row="5" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-                                    <CheckBox x:Name="cb_ofertas" Content="Quiero recibir ofertas"  Grid.Row="6" Grid.RowSpan="2" ></CheckBox>
+                                    <CheckBox x:Name="cb_ofertas" Content="Quiero recibir ofertas"  Grid.Row="6" Grid.RowSpan="2" Checked="cb_ofertas_Checked"  ></CheckBox>
 
                                 </Grid>
 
@@ -494,7 +496,7 @@
 
                         </GroupBox>
 
-                        <Grid Grid.Column="3" Margin="0,7,0,0" Grid.RowSpan="2">
+                        <Grid Grid.Column="5" Margin="0,7,57,0" Grid.RowSpan="2" Grid.ColumnSpan="2">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="0.05*"/>
                                 <ColumnDefinition Width="0.25*"/>
@@ -532,7 +534,7 @@
                             </Button>
 
                         </Grid>
-                        <GroupBox x:Name="gb_historialrutasExcursionista" Grid.Column="3" Background="White" Grid.Row="4" >
+                        <GroupBox x:Name="gb_historialrutasExcursionista" Grid.Column="5" Background="White" Grid.Row="3" Grid.ColumnSpan="2" Margin="0,368,57,18" Grid.RowSpan="3" >
                             <Grid Height="Auto" Width="Auto">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="0.05*"/>
@@ -544,22 +546,21 @@
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="0.05*"/>
                                     <RowDefinition Height="0.1*"/>
-                                    <RowDefinition Height="0.1*"/>
                                     <RowDefinition Height="0.7*"/>
                                     <RowDefinition Height="0.05*"/>
                                 </Grid.RowDefinitions>
-                                <Viewbox Grid.Row="1" Grid.Column="3" Grid.RowSpan="2" HorizontalAlignment="Center">
+                                <Viewbox Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center">
                                     <TextBlock x:Name="lb_historialExcursionista" TextWrapping="Wrap" Text="HISTORIAL DE RUTAS"  FontWeight="Bold" TextAlignment="Center"></TextBlock>
                                 </Viewbox>
 
-                                <Viewbox Grid.Column="1" Grid.Row="1" Width="Auto" Height="Auto" HorizontalAlignment="Left">
-                                    <CheckBox x:Name="cb_elegirrealizadaExcursionista" Content="Rutas Realizadas" ></CheckBox>
-                                </Viewbox>
-                                <Viewbox Grid.Column="1" Grid.Row="2" Width="Auto" Height="Auto" HorizontalAlignment="Left">
-                                    <CheckBox x:Name="cb_elegirplanificadaExcursionista"  Content="Rutas Planificadas" ></CheckBox>
-                                </Viewbox>
+                                <Viewbox Grid.Column="1" Grid.Row="1" Width="Auto" Height="Auto" HorizontalAlignment="Left"/>
+                                <Viewbox Grid.Column="1" Grid.Row="2" Width="Auto" Height="Auto" HorizontalAlignment="Left"/>
 
-                                <ListBox  x:Name="lb_rutasrealplaExcursionista" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" ></ListBox>
+                                <ListBox  x:Name="lb_rutasrealplaExcursionista" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" ></ListBox>
+                                <ComboBox x:Name="cb_rutasExcursionistas" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Height="28" VerticalAlignment="Top" Width="169" SelectionChanged="ComboBoxRutasExcursionistas_SelectionChanged" >
+                                    <ComboBoxItem Content="Rutas Planificadas"/>
+                                    <ComboBoxItem Content="Rutas Realizadas"/>
+                                </ComboBox>
 
                             </Grid>
 
@@ -588,7 +589,7 @@
                             <RowDefinition Height="0.025*"/>
                         </Grid.RowDefinitions>
 
-                        <ListBox x:Name="ListBoxOfertas" SelectionChanged="PrintText" SelectionMode="Single" Grid.Row="3" Grid.Column="1"/>
+                        <ListBox x:Name="ListBoxOfertas" SelectionChanged="rellenaCasillasOferta" SelectionMode="Single" Grid.Row="3" Grid.Column="1"/>
 
                         <GroupBox x:Name="gb_ofertas" Grid.Column="3" Background="White" Grid.Row="3" >
                             <Grid Height="Auto" Width="Auto">
@@ -656,6 +657,100 @@
                         </Grid>
 
                     </Grid>
+
+                </TabItem>
+
+                <TabItem x:Name="tiPDIs" Header="PDIs" IsEnabled="False" >
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.05*"/>
+                            <ColumnDefinition Width="0.25*"/>
+                            <ColumnDefinition Width="0.05*"/>
+                            <ColumnDefinition Width="0.50*"/>
+                            <ColumnDefinition Width="0.05*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.025*"/>
+                            <RowDefinition Height="0.1*"/>
+                            <RowDefinition Height="0.025*"/>
+                            <RowDefinition Height="0.50*"/>
+                            <RowDefinition Height="0.025*"/>
+                        </Grid.RowDefinitions>
+
+                        <ListBox x:Name="ListBoxPDI" SelectionMode="Single" Grid.Row="3" Grid.Column="1"/>
+
+                        <GroupBox x:Name="gb_pdi" Grid.Column="3" Background="White" Grid.Row="3" >
+                            <Grid Height="Auto" Width="Auto">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.05*"/>
+                                    <ColumnDefinition Width="0.40*"/>
+                                    <ColumnDefinition Width="0.05*"/>
+                                    <ColumnDefinition Width="0.45*"/>
+                                    <ColumnDefinition Width="0.05*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.05*"/>
+                                    <RowDefinition Height="0.1*"/>
+                                    <RowDefinition Height="0.1*"/>
+                                    <RowDefinition Height="0.7*"/>
+                                    <RowDefinition Height="0.05*"/>
+                                </Grid.RowDefinitions>
+
+                                <Label x:Name="lb_nombre_pdi" Content="Nombre del punto de interés"  FontWeight="Bold" FontSize="20"  Grid.Column="1" Grid.ColumnSpan="4" Height="33" VerticalAlignment="Center" Grid.Row="1"/>
+                                <TextBlock x:Name="lb_descripcionpuntodeonteres" TextWrapping="Wrap" Text="Descripción" Grid.Row="2" Grid.Column="1" />
+                                <TextBox x:Name="tb_descricpcionpdi" TextWrapping="Wrap" IsReadOnly="True" Grid.Row="3" Grid.Column="1" Height="Auto" Width="Auto"/>
+
+                                <Image x:Name="img_pdi" Grid.Column="3" Grid.Row="2" Grid.RowSpan="2"/>
+
+                            </Grid>
+                        </GroupBox>
+
+                        <Grid Grid.Column="3" Margin="0,7,0,0" Grid.RowSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.05*"/>
+                                <ColumnDefinition Width="0.25*"/>
+                                <ColumnDefinition Width="0.05*"/>
+                                <ColumnDefinition Width="0.25*"/>
+                                <ColumnDefinition Width="0.05*"/>
+                                <ColumnDefinition Width="0.25*"/>
+                                <ColumnDefinition Width="0.05*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.15*"/>
+                                <RowDefinition Height="0.70*"/>
+                                <RowDefinition Height="0.15*"/>
+                            </Grid.RowDefinitions>
+
+                            <Button x:Name ="bt_anadirPdi" Height="Auto" Grid.Row="1"  Grid.Column="1" VerticalAlignment="Top" Background="#FF423F3F" Foreground="White" Width="Auto" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/Imagenes/add.png" Width="15" />
+                                    <TextBlock Margin="10,0,0,0" VerticalAlignment="Center"  Width="Auto"><Run Text="Añadir"/></TextBlock>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name ="bt_editarPdi" Height="Auto" Grid.Row="1"  Grid.Column="3" VerticalAlignment="Top" Background="#FF423F3F" Foreground="White" Width="Auto" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Width="15" Source="/Imagenes/edit.png"  />
+                                    <TextBlock Margin="10,0,0,0" VerticalAlignment="Center"  Width="Auto"><Run Text="Editar"/></TextBlock>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name ="bt_eliminarPDI" Height="Auto" Grid.Row="1"  Grid.Column="5" VerticalAlignment="Top" Background="#FF423F3F" Foreground="White" Width="Auto" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/Imagenes/delete.png"  Width="15" />
+                                    <TextBlock Margin="10,0,0,0" VerticalAlignment="Center"  Width="Auto"><Run Text="Eliminar"/></TextBlock>
+                                </StackPanel>
+                            </Button>
+
+                        </Grid>
+
+                    </Grid>
+
+
+
 
                 </TabItem>
 

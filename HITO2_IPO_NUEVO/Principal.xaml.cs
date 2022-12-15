@@ -33,53 +33,33 @@ namespace HITO2_IPO_NUEVO
         {
             user = u;
             InitializeComponent();
+            inicializaHerramientas();
 
             listadoRutas = CargarContenidoRutasXML();
-            foreach (Ruta ruta in listadoRutas)
-            {
-                ListBoxRutas.Items.Add(ruta.Nombre);
-            }
-
+            imprimirNombreRutas();
+            
             PrintUserData();
 
             //----------- A PARTIR DE AQUÍ EL CÓDIGO ES PARA PRUEBAS ----------------
 
             listadoPuntosInteres = CargarContenidoPuntosInteresXML();
-            foreach (PuntoInteres puntoInteres in listadoPuntosInteres)
-            {
-                //ListBoxPuntosInteres.Items.Add(puntoInteres.Nombre); //esto habría que cambiarlo luego
-            }
+            imprimirNombrePuntosInteres();
 
             listadoExcursionistas = CargarContenidoExcursionistasXML();
-            foreach (Excursionista excursionista in listadoExcursionistas)
-            {
-                //ListBoxPuntosInteres.Items.Add(excursionista.Name); //esto habría que cambiarlo luego
-                for (int i = 0; i < excursionista.RutasFuturas.Count; i++)
-                {
-                    //ListBoxPuntosInteres.Items.Add(excursionista.RutasFuturas[i].Nombre);
-                }
-                //ListBoxPuntosInteres.Items.Add("");
-            }
+            imprimirNombreExcursionistas();
 
             listadoGuias = CargarContenidoGuiasXML();
-            foreach (Guia guia in listadoGuias)
-            {
-                //ListBoxPuntosInteres.Items.Add(guia.Name); //esto habría que cambiarlo luego
-                for (int i = 0; i < guia.RutasFuturas.Count; i++)
-                {
-                    //ListBoxPuntosInteres.Items.Add(guia.RutasFuturas[i].Nombre);
-                }
-                //ListBoxPuntosInteres.Items.Add("");
-            }
+            imprimirNombreGuias();
 
             listadoOfertas = CargarContenidoOfertasXML();
-            foreach (Oferta oferta in listadoOfertas)
-            {
-                //ListBoxPuntosInteres.Items.Add(oferta.Descripcion); //esto habría que cambiarlo luego
-            }
+            imprimirNombreOfertas();
 
         }
 
+        void inicializaHerramientas()
+        {
+            cb_rutasExcursionistas.IsEnabled = false;
+        }
 
         void PrintUserData()
         {
@@ -103,41 +83,9 @@ namespace HITO2_IPO_NUEVO
             this.Close();
         }
 
-        private void PrintText(object sender, SelectionChangedEventArgs e)
+        private void btn_Ayuda_Click(object sender, RoutedEventArgs e)
         {
-            int index = ListBoxRutas.SelectedIndex;
-            var rutaAux = listadoRutas[index];
-
-            lb_nombre.Content = rutaAux.Nombre.ToString();
-            tb_origen.Text = rutaAux.Origen.ToString();
-            tb_destino.Text = rutaAux.Origen.ToString();
-            tb_provincia.Text = rutaAux.Provincia.ToString();
-            tb_dificultad.Text = rutaAux.Dificultad.ToString();
-            tb_plazas.Text = rutaAux.PlazasDisponibles.ToString();
-            //tb_material.Text = rutaAux.MaterialNecesario.ToString();
-            //tb_realizaciones.Text = rutaAux.NumeroDeRealizaciones.ToString();
-            dp_fecha.Text = Convert.ToDateTime(rutaAux.Fecha.ToString()).ToString();
-
-            // https://stackoverflow.com/questions/18435829/showing-image-in-wpf-using-the-url-link-from-database
-            var fullFilePath = rutaAux.URL_RUTA.ToString();
-            BitmapImage bitmap = new BitmapImage();
-            bitmap.BeginInit();
-            bitmap.UriSource = new Uri(fullFilePath, UriKind.Absolute);
-            bitmap.EndInit();
-
-            img_ruta.Source = bitmap;
-
-            //var fullFilePath2 = rutaAux.URL_INTERES.ToString();
-            //BitmapImage bitmap2 = new BitmapImage();
-            //bitmap2.BeginInit();
-            //bitmap2.UriSource = new Uri(fullFilePath2, UriKind.Absolute);
-            //bitmap2.EndInit();
-
-            //img_interesRuta.Source = bitmap2;
-
-            bt_anadir.IsEnabled = true;
-            bt_editar.IsEnabled = true;
-            bt_eliminar.IsEnabled = true;
+            System.Diagnostics.Process.Start("https://github.com/gvraul8/IPO/wiki/AYUDA");
         }
 
         private List<Ruta> CargarContenidoRutasXML()
@@ -145,7 +93,10 @@ namespace HITO2_IPO_NUEVO
             List<Ruta> listado = new List<Ruta>();
             // Cargar contenido de prueba
             XmlDocument doc = new XmlDocument();
+            
             var fichero = Application.GetResourceStream(new Uri("Datos/rutas.xml", UriKind.Relative));
+            //var fichero = Application.GetResourceStream(new Uri("bin/Debug/rutas.xml", UriKind.Relative));
+            
             doc.Load(fichero.Stream);
             foreach (XmlNode node in doc.DocumentElement.ChildNodes)
             {
@@ -341,10 +292,260 @@ namespace HITO2_IPO_NUEVO
             return listado;
         }
 
-        private void btn_Ayuda_Click(object sender, RoutedEventArgs e)
+        private void InsertarRutaEnXML(List<Ruta> listadoAux)
         {
-            System.Diagnostics.Process.Start("https://github.com/gvraul8/IPO/wiki/AYUDA");
+            XmlDocument doc = new XmlDocument();
+            XmlNode cabecera = doc.CreateElement("Rutas");
+            doc.AppendChild(cabecera);
+            doc.InsertBefore(doc.CreateXmlDeclaration("1.0","UTF-8",null), cabecera);
+           
+            XmlNode rutaInsertar = doc.CreateElement("Ruta");
+
+            foreach (Ruta rutaAux in listadoAux)
+            {
+                rutaInsertar = doc.CreateElement("Ruta");
+
+                XmlAttribute nombre = doc.CreateAttribute("Nombre");
+                nombre.Value = rutaAux.Nombre;
+                rutaInsertar.Attributes.Append(nombre);
+
+                XmlAttribute origen = doc.CreateAttribute("Origen");
+                origen.Value = rutaAux.Origen;
+                rutaInsertar.Attributes.Append(origen);
+
+                XmlAttribute destino = doc.CreateAttribute("Destino");
+                destino.Value = rutaAux.Destino;
+                rutaInsertar.Attributes.Append(destino);
+
+                XmlAttribute provincia = doc.CreateAttribute("Provincia");
+                provincia.Value = rutaAux.Provincia;
+                rutaInsertar.Attributes.Append(provincia);
+
+                XmlAttribute fecha = doc.CreateAttribute("Fecha");
+                fecha.Value = rutaAux.Fecha.ToString();
+                rutaInsertar.Attributes.Append(fecha);
+
+                XmlAttribute dificultad = doc.CreateAttribute("Dificultad");
+                dificultad.Value = rutaAux.Dificultad;
+                rutaInsertar.Attributes.Append(dificultad);
+
+                XmlAttribute plazasDisponibles = doc.CreateAttribute("PlazasDisponibles");
+                plazasDisponibles.Value = rutaAux.PlazasDisponibles.ToString();
+                rutaInsertar.Attributes.Append(plazasDisponibles);
+
+                XmlAttribute materialNecesario = doc.CreateAttribute("MaterialNecesario");
+                materialNecesario.Value = rutaAux.MaterialNecesario;
+                rutaInsertar.Attributes.Append(materialNecesario);
+
+                XmlAttribute numeroRealizaciones = doc.CreateAttribute("NumeroDeRealizaciones");
+                numeroRealizaciones.Value = rutaAux.NumeroDeRealizaciones.ToString();
+                rutaInsertar.Attributes.Append(numeroRealizaciones);
+
+                XmlAttribute url_Ruta = doc.CreateAttribute("URL_RUTA");
+                url_Ruta.Value = rutaAux.URL_RUTA.ToString();
+                rutaInsertar.Attributes.Append(url_Ruta);
+
+                cabecera.AppendChild(rutaInsertar);
+            }
+            
+            doc.Save("rutas2.xml");
+            //doc.Save("Datos/rutas.xml");
         }
+   
+        private void imprimirNombreRutas()
+        {
+            foreach (Ruta ruta in listadoRutas)
+            {
+                ListBoxRutas.Items.Add(ruta.Nombre);
+            }
+        }
+
+        private void imprimirNombreGuias()
+        {
+            foreach (Guia guia in listadoGuias)
+            {
+                ListBoxGuias.Items.Add(guia.Name); 
+            }
+            
+        }
+
+        private void imprimirNombreExcursionistas()
+        {
+            foreach (Excursionista excursionista in listadoExcursionistas)
+            {
+                ListBoxExcursionistas.Items.Add(excursionista.Name);
+            }
+
+        }
+
+        private void imprimirNombreOfertas()
+        {
+            foreach (Oferta oferta in listadoOfertas)
+            {
+                ListBoxOfertas.Items.Add(oferta.Id); 
+            }
+        }
+
+        private void rellenaCasillasRuta(object sender, SelectionChangedEventArgs e)
+        {
+            int index = ListBoxRutas.SelectedIndex;
+            var rutaAux = listadoRutas[index];
+
+            tb_nombre.Text = rutaAux.Nombre.ToString();
+            tb_origen.Text = rutaAux.Origen.ToString();
+            tb_destino.Text = rutaAux.Origen.ToString();
+            tb_provincia.Text = rutaAux.Provincia.ToString();
+            tb_dificultad.Text = rutaAux.Dificultad.ToString();
+            tb_plazas.Text = rutaAux.PlazasDisponibles.ToString();
+            //tb_material.Text = rutaAux.MaterialNecesario.ToString();
+            //tb_realizaciones.Text = rutaAux.NumeroDeRealizaciones.ToString();
+            dp_fecha.Text = Convert.ToDateTime(rutaAux.Fecha.ToString()).ToString();
+
+            // https://stackoverflow.com/questions/18435829/showing-image-in-wpf-using-the-url-link-from-database
+            var fullFilePath = rutaAux.URL_RUTA.ToString();
+            BitmapImage bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(fullFilePath, UriKind.Absolute);
+            bitmap.EndInit();
+
+            img_ruta.Source = bitmap;
+
+            //var fullFilePath2 = rutaAux.URL_INTERES.ToString();
+            //BitmapImage bitmap2 = new BitmapImage();
+            //bitmap2.BeginInit();
+            //bitmap2.UriSource = new Uri(fullFilePath2, UriKind.Absolute);
+            //bitmap2.EndInit();
+
+            //img_interesRuta.Source = bitmap2;
+
+            bt_anadir.IsEnabled = false;
+            bt_editar.IsEnabled = true;
+            bt_eliminar.IsEnabled = true;
+        }
+
+        //RELLENAR LUEGO CON LA NUEVA PESTAÑA
+        private void imprimirNombrePuntosInteres()
+        {
+
+        }
+
+        private void rellenaCasillasExcursionista(object sender, SelectionChangedEventArgs e)
+        {
+            if (ListBoxExcursionistas.SelectedItem != null)
+            {
+                lb_rutasrealplaExcursionista.Items.Clear();
+                cb_rutasExcursionistas.IsEnabled = true;
+
+                int index = ListBoxExcursionistas.SelectedIndex;
+                var excursionistaAux = listadoExcursionistas[index];
+
+                lb_nombre_excursionista.Content = excursionistaAux.Name;
+                tb_edad.Text = excursionistaAux.Edad.ToString();
+                tb_telefonoexcursionista.Text = excursionistaAux.Telefono;
+                tb_correoexcursionista.Text = excursionistaAux.Email;
+                if (excursionistaAux.Notificaciones)
+                {
+                    //cb_ofertas.Checked = true;
+                }
+
+                bt_anadirExcursionista.IsEnabled = false;
+                bt_editarExcursionista.IsEnabled = true;
+                bt_eliminarExcursionista.IsEnabled = true;
+            }
+            else if (ListBoxExcursionistas.SelectedIndex == -1)
+            {
+                cb_rutasExcursionistas.IsEnabled = false;
+            }
+        }
+
+        private void ComboBoxRutasExcursionistas_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string selectedItem = cb_rutasExcursionistas.SelectedValue.ToString();
+
+            if (selectedItem.Equals("System.Windows.Controls.ComboBoxItem: Rutas Realizadas"))
+            {
+                imprimeRutasRealizarExcursionista();
+            }
+            else if (selectedItem.Equals("System.Windows.Controls.ComboBoxItem: Rutas Planificadas"))
+            {
+                imprimeRutasFuturasExcursionista();
+            }
+        }
+
+        private void imprimeRutasRealizarExcursionista()
+        {
+            lb_rutasrealplaExcursionista.Items.Clear();
+            int index = ListBoxExcursionistas.SelectedIndex;
+            var excursionistaAux = listadoExcursionistas[index];
+
+            foreach (Ruta ruta in excursionistaAux.RutasRealizadas)
+            {
+                lb_rutasrealplaExcursionista.Items.Add(ruta.Nombre + " (" + ruta.Fecha + ")");
+            }
+        }
+
+        private void imprimeRutasFuturasExcursionista()
+        {
+            lb_rutasrealplaExcursionista.Items.Clear();
+            int index = ListBoxExcursionistas.SelectedIndex;
+            var excursionistaAux = listadoExcursionistas[index];
+
+            foreach (Ruta ruta in excursionistaAux.RutasFuturas)
+            {
+                lb_rutasrealplaExcursionista.Items.Add(ruta.Nombre + " (" + ruta.Fecha + ")");
+            }
+        }
+
+        private void rellenaCasillasOferta(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void cb_ofertas_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void bt_editars_Click(object sender, RoutedEventArgs e)
+        {
+            tcPestanas.SelectedIndex = 1;
+        }
+
+        private void edicionTextBox(Boolean bloqueado)
+        {
+            tb_nombre.IsReadOnly = bloqueado;
+            tb_origen.IsReadOnly = bloqueado;
+            tb_destino.IsReadOnly = bloqueado;
+            tb_provincia.IsReadOnly = bloqueado;
+            //dp_fecha.IsReadOnly = activado;
+            tb_dificultad.IsReadOnly = bloqueado;
+            tb_plazas.IsReadOnly = bloqueado;
+
+            if (bloqueado == false)
+            {
+                tb_nombre.Text = "Escriba aqui el nombre de la ruta";
+                bt_editars.Content = "Seleccionar guia";
+                bt_consultarPDis.IsEnabled = false;
+                tb_nombre.Focus();
+            }
+
+        }
+
+        private void bt_editar_Click(object sender, RoutedEventArgs e)
+        {
+            edicionTextBox(false);
+        }
+
+     
+        private void bt_consultarPDis_Click(object sender, RoutedEventArgs e)
+        {
+            bt_consultarPDis.IsEnabled = true;
+
+
+            tcPestanas.SelectedIndex = 4;
+        }
+
     }
-    
 }
+    
+

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Ruta>
+<Cabecera>
 	<Ruta Nombre="Ruta de Valhondo" Origen="Finca la Gargantilla" Destino="Finca la Gargantilla" Provincia ="Ciudad Real"
             Fecha ="20/12/2022 10:00:00" Dificultad="Media - Baja"
             PlazasDisponibles="10" MaterialNecesario="Ropa deportiva" NumeroDeRealizaciones = "40" 
@@ -26,4 +26,4 @@
 		    URL_RUTA="https://content.skyscnr.com/m/462f7c273fac6438/original/GettyImages-474781630.jpg"
 		    URL_INTERES ="https://content.skyscnr.com/m/471d45c35b6d2e36/original/GettyImages-177474842_doc.jpg"/>
 
-</Ruta>
+</Cabecera>

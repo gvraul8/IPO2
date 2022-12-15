@@ -59,12 +59,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Excursionista.cs" />
-    <Compile Include="Guia.cs" />
-    <Compile Include="Oferta.cs" />
-    <Compile Include="PuntoInteres.cs" />
-    <Compile Include="ruta.cs" />
-    <Compile Include="usuario.cs" />
+    <Compile Include="Dominio\Excursionista.cs" />
+    <Compile Include="Dominio\Guia.cs" />
+    <Compile Include="Dominio\Oferta.cs" />
+    <Compile Include="Dominio\PuntoInteres.cs" />
+    <Compile Include="Dominio\Ruta.cs" />
+    <Compile Include="Dominio\Usuario.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
