@@ -290,7 +290,7 @@
                             <RowDefinition Height="0.025*"/>
                         </Grid.RowDefinitions>
 
-                        <ListBox x:Name="ListBoxGuias" SelectionChanged="rellenaCasillasRuta" SelectionMode="Single" Grid.Row="3" Grid.Column="1" Grid.RowSpan="2"/>
+                        <ListBox x:Name="ListBoxGuias" SelectionChanged="rellenaCasillasGuias" SelectionMode="Single" Grid.Row="3" Grid.Column="1" Grid.RowSpan="2"/>
 
                         <GroupBox x:Name="gb_guias" Grid.Column="3" Background="White" Grid.Row="3" >
                             <Grid Height="Auto" Width="Auto">
@@ -308,7 +308,7 @@
                                     <RowDefinition Height="0.05*"/>
                                 </Grid.RowDefinitions>
 
-                                <TextBox x:Name="lb_nombre_guia" Text="Nombre del guía"  FontWeight="Bold" FontSize="20"  Grid.Column="1" Grid.ColumnSpan="4" Height="33" VerticalAlignment="Center" Grid.Row="1"/>
+                                <TextBox x:Name="tb_nombre_guia" Text="Nombre del guía"  FontWeight="Bold" FontSize="20"  Grid.Column="1" Grid.ColumnSpan="4" Height="33" VerticalAlignment="Center" Grid.Row="1"/>
 
                                 <Grid Grid.Column="1" Grid.Row="2">
                                     <Grid.RowDefinitions>
@@ -403,14 +403,12 @@
                                     <TextBlock x:Name="lb_historial" TextWrapping="Wrap" Text="HISTORIAL DE RUTAS"  FontWeight="Bold" TextAlignment="Center"></TextBlock>
                                 </Viewbox>
 
-                                <Viewbox Grid.Column="1" Grid.Row="1" Width="Auto" Height="Auto" HorizontalAlignment="Left">
-                                    <CheckBox x:Name="cb_elegirrealizada" Content="Rutas Realizadas" ></CheckBox>
-                                </Viewbox>
-                                <Viewbox Grid.Column="1" Grid.Row="2" Width="Auto" Height="Auto" HorizontalAlignment="Left">
-                                    <CheckBox x:Name="cb_elegirplanificada"  Content="Rutas Planificadas" ></CheckBox>
-                                </Viewbox>
+                                <ComboBox x:Name="cb_rutasGuias" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Height="28" VerticalAlignment="Top" Width="169" SelectionChanged="ComboBoxRutasGuias_SelectionChanged" RenderTransformOrigin="0.488,1.369" Margin="0,22,0,0" Grid.RowSpan="3" >
+                                    <ComboBoxItem Content="Rutas Planificadas"/>
+                                    <ComboBoxItem Content="Rutas Realizadas"/>
+                                </ComboBox>
 
-                                <ListBox  x:Name="lb_rutasrealpla" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" ></ListBox>
+                                <ListBox  x:Name="lb_rutasrealplaGuias" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" ></ListBox>
 
                             </Grid>
 
@@ -485,7 +483,7 @@
 
                                     <TextBlock x:Name="lb_correoexcursionista" TextWrapping="Wrap" Text="Correo electrónico" Grid.Row="4" Grid.ColumnSpan="2" Grid.RowSpan="2" />
                                     <TextBox x:Name="tb_correoexcursionista"  IsReadOnly="True" Grid.Row="5" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-                                    <CheckBox x:Name="cb_ofertas" Content="Quiero recibir ofertas"  Grid.Row="6" Grid.RowSpan="2" Checked="cb_ofertas_Checked"  ></CheckBox>
+                                    <CheckBox x:Name="cb_ofertas" Content="Quiero recibir ofertas"  Grid.Row="6" Grid.RowSpan="2"  />
 
                                 </Grid>
 
@@ -574,11 +572,12 @@
                     <Grid>
 
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.05*"/>
-                            <ColumnDefinition Width="0.25*"/>
-                            <ColumnDefinition Width="0.05*"/>
-                            <ColumnDefinition Width="0.50*"/>
-                            <ColumnDefinition Width="0.05*"/>
+                            <ColumnDefinition Width="57*"/>
+                            <ColumnDefinition Width="244*"/>
+                            <ColumnDefinition Width="43*"/>
+                            <ColumnDefinition Width="57*"/>
+                            <ColumnDefinition Width="574*"/>
+                            <ColumnDefinition Width="57*"/>
                         </Grid.ColumnDefinitions>
 
                         <Grid.RowDefinitions>
@@ -589,9 +588,9 @@
                             <RowDefinition Height="0.025*"/>
                         </Grid.RowDefinitions>
 
-                        <ListBox x:Name="ListBoxOfertas" SelectionChanged="rellenaCasillasOferta" SelectionMode="Single" Grid.Row="3" Grid.Column="1"/>
+                        <ListBox x:Name="ListBoxOfertas" SelectionChanged="rellenaCasillasOferta" SelectionMode="Single" Grid.Row="3" Grid.ColumnSpan="4" Margin="57,0,57,0"/>
 
-                        <GroupBox x:Name="gb_ofertas" Grid.Column="3" Background="White" Grid.Row="3" >
+                        <GroupBox x:Name="gb_ofertas" Grid.Column="3" Background="White" Grid.Row="3" Grid.ColumnSpan="3" Margin="57,0,57,0" >
                             <Grid Height="Auto" Width="Auto">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="0.05*"/>
@@ -608,16 +607,18 @@
                                     <RowDefinition Height="0.05*"/>
                                 </Grid.RowDefinitions>
 
-                                <TextBox x:Name="lb_nombre_oferta" Text="Nombre de la oferta"  FontWeight="Bold" FontSize="20"  Grid.Column="1" Grid.ColumnSpan="4" Height="33" VerticalAlignment="Center" Grid.Row="1"/>
-                                <TextBlock x:Name="lb_descripcionoferta" TextWrapping="Wrap" Text="Descripción" Grid.Row="2" Grid.Column="1" />
-                                <TextBox x:Name="tb_descricpcionoferta" TextWrapping="Wrap" IsReadOnly="True" Grid.Row="3" Grid.Column="1" Height="Auto" Width="Auto"/>
+                                <TextBox x:Name="tb_nombre_oferta" Text="Nombre de la oferta"  FontWeight="Bold" FontSize="20"  Grid.Column="1" Grid.ColumnSpan="4" Height="33" VerticalAlignment="Center" Grid.Row="1"/>
+                                <TextBlock x:Name="lb_descripcionoferta" TextWrapping="Wrap" Text="Descripción" Grid.Row="3" RenderTransformOrigin="0.505,3.89" Grid.ColumnSpan="3" Margin="28,147,28,202" />
+                                <TextBox x:Name="tb_descricpcionoferta" TextWrapping="Wrap" IsReadOnly="True" Grid.Row="3" Height="Auto" Width="Auto" Grid.ColumnSpan="3" Margin="28,180,28,173"/>
 
                                 <Image x:Name="img_oferta" Grid.Column="3" Grid.Row="2" Grid.RowSpan="2"/>
+                                <Label x:Name="lb_rutaOferta" Grid.Column="1" Content="Ruta asociada" HorizontalAlignment="Center" Height="37" Margin="0,37,0,0" Grid.Row="3" VerticalAlignment="Top" Width="226"/>
+                                <TextBox x:Name="tb_rutaOferta" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="37" Margin="28,74,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="216"/>
 
                             </Grid>
                         </GroupBox>
 
-                        <Grid Grid.Column="3" Margin="0,7,0,0" Grid.RowSpan="2">
+                        <Grid Grid.Column="3" Margin="57,7,57,28" Grid.RowSpan="3" Grid.ColumnSpan="3">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="0.05*"/>
                                 <ColumnDefinition Width="0.25*"/>
@@ -680,7 +681,7 @@
                             <RowDefinition Height="0.025*"/>
                         </Grid.RowDefinitions>
 
-                        <ListBox x:Name="ListBoxPDI" SelectionMode="Single" Grid.Row="3" Grid.Column="1"/>
+                        <ListBox x:Name="ListBoxPDI" SelectionMode="Single" Grid.Row="3" Grid.Column="1" SelectionChanged="rellenaCasillasPuntoInteres"/>
 
                         <GroupBox x:Name="gb_pdi" Grid.Column="3" Background="White" Grid.Row="3" >
                             <Grid Height="Auto" Width="Auto">
@@ -700,7 +701,7 @@
                                 </Grid.RowDefinitions>
 
                                 <Label x:Name="lb_nombre_pdi" Content="Nombre del punto de interés"  FontWeight="Bold" FontSize="20"  Grid.Column="1" Grid.ColumnSpan="4" Height="33" VerticalAlignment="Center" Grid.Row="1"/>
-                                <TextBlock x:Name="lb_descripcionpuntodeonteres" TextWrapping="Wrap" Text="Descripción" Grid.Row="2" Grid.Column="1" />
+                                <TextBlock x:Name="lb_descripcionpuntodeonteres" TextWrapping="Wrap" Text="Descripción" Grid.Row="2" Grid.ColumnSpan="2" Margin="28,27,0,359" Grid.RowSpan="2" />
                                 <TextBox x:Name="tb_descricpcionpdi" TextWrapping="Wrap" IsReadOnly="True" Grid.Row="3" Grid.Column="1" Height="Auto" Width="Auto"/>
 
                                 <Image x:Name="img_pdi" Grid.Column="3" Grid.Row="2" Grid.RowSpan="2"/>
