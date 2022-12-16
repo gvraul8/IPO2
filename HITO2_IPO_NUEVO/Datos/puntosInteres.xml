@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PuntoInteres>
+	<PuntoInteres Nombre="Santuario de la Virgen de las Nieves" Descripcion="El santuario de Nuestra Señora de las Nieves es un complejo de edificaciones en torno a la ermita donde se venera la imagen mariana de la Virgen de las Nieves. Entre estas edificaciones encontramos una plaza de toros de forma irregular. " 
+				  NombreRuta="Ruta de Valhondo" 
+				  Imagen="https://es.wikipedia.org/wiki/Archivo:Santa_Cruz_-_Virgen_de_las_Nieves_01_ies.jpg" />
+	<PuntoInteres Nombre="Mirador Ahi De Cara" Descripcion="El mirador Ahí de Cara se ubica en el monte del mismo nombre, a 2.100 m. de altitud. Desde el mismo, se puede divisar parcialmente la línea de cumbres de la zona de poniente del macizo de Sierra Nevada, destacándose el Mulhacén con 3.482 m., la máxima altitud de la península.
+Junto al mirador transita el Camino de los Neveros, recorrido tradicional de los neveros, hombres de los pueblos de la zona que, durante los meses de verano, ascendían a las cumbres de Sierra Nevada para extraer nieve que más tarde distribuían y vendían como producto terapéutico y refrescante. Aprovechaban la noche para emprender el camino de regreso a la ciudad de Granada y así evitar los rigores del calor diurno." 
+				  NombreRuta="Senda del Boquerón del Estena" 
+				  Imagen="https://lh3.googleusercontent.com/p/AF1QipNBx3SuGi4SjQh0EB5Gi6DhkGP7L9cvWzBnPOWx=s1360-w1360-h1020" />
+	<PuntoInteres Nombre="Bosque Finlandés de Rascafría" Descripcion="El Bosque de Finlandia es un lugar recóndito, pero al que se llega muy fácilmente desde el emblemático Puente del Perdón, a través del conocido como camino del papel. Este sendero se llama así porque conduce hasta el antiguo molino de papel en el que los monjes del Monasterio de El Paular fabricaban hojas. Fue el primero que existió en Castilla y de él salió el papel que se utilizó para imprimir la edición príncipe de la primera parte de El Quijote.
+
+Abetos, chopos, adebules y otras especies arbóreas propias de los parajes del norte de Europa jalonan este paseo que permite observar un precioso embarcadero sobre las aguas del río Lozoya, y que en este punto forman una represa. Junto a él se encuentra una caseta de madera que, en su día, se utilizó como sauna, uno de los símbolos finlandeses." 
+				  NombreRuta="Ruta de Pradera de Ordesa" 
+				  Imagen="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcTQ2--yrJoe1ik8J5K2dJUOaTK36PO00ZhffgUKrWWQATAfPk7SgIFc9EEx6UHo3jFH1HFQmqAivqObcIeRtpJH3g" />
+	<PuntoInteres Nombre="Faro de Tramuntana" Descripcion="Fue el segundo faro en construirse, con motivo del apagado faro de Na Popia,5​ se levantó sobre la máxima elevación de la isla de Dragonera, frente a Mallorca, en las islas Baleares.
+
+Sobre su tipo de instalación se dudó al principio llegando incluso a considerar el simple establecimiento de una luz de alumbrado permanente, montada en una torreta metálica y atendida por el mismo personal del faro del otro extremo de la isla, en Cap Llebeig,​ pero definitivamente, se adoptó el criterio de construir un faro con vivienda." 
+				  NombreRuta="Cahorros del Río Chillar"
+				  Imagen="https://www.milviatges.com/wp-content/uploads/sites/267/2020/03/que-ver-en-serra-de-tramuntana.jpg" />
+	<PuntoInteres Nombre="Torre de Hércules" Descripcion="La Torre de Hércules es el único faro romano que desde sus orígenes hasta la actualidad ha cumplido con su función primigenia, la de servir de señal marítima e instrumento de navegación para las embarcaciones que en su travesía atravesaban y atraviesan el corredor atlántico." 
+				  NombreRuta="Parque Natural del Gorbea"
+				  Imagen="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSqX8s7DMzoCUEY746zZQpGfLEP5G_eRTSrsxocCzIjHNLl7euzPcv9Yvk5ZITmyxX7ci8GuupRBeoosujNh59LSg" />
+	
+</PuntoInteres>
