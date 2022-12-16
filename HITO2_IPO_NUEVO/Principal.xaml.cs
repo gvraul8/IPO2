@@ -42,18 +42,18 @@ namespace HITO2_IPO_NUEVO
 
             listadoExcursionistas = CargarContenidoExcursionistasXML();
             imprimirNombreExcursionistas();
-            inicializaComponenetesExcursionistas();
+            inicializaComponenentesExcursionistas();
 
             listadoGuias = CargarContenidoGuiasXML();
             imprimirNombreGuias();
-            inicializaComponenetesGuias();
+            inicializaComponenentesGuias();
 
             listadoOfertas = CargarContenidoOfertasXML();
             imprimirNombreOfertas();
-            inicializaComponenetesOfertas();
+            inicializaComponenentesOfertas();
 
             listadoPuntosInteres = CargarContenidoPuntosInteresXML();
-            inicializaComponenetesPuntosInteres();
+            inicializaComponenentesPuntosInteres();
 
 
         }
@@ -244,7 +244,9 @@ namespace HITO2_IPO_NUEVO
             bt_eliminar.IsEnabled = false;
 
             bt_anadirs.IsEnabled = false;  //poner a true cuando se pulse el de añadir
-            bt_consultarPDis.IsEnabled = false; 
+            bt_consultarPDis.IsEnabled = false;
+
+            //quedaría deshabilitar boton GUARDAR CUANDO LO CREEN (SE ACTIVARÁ SÓLO CUANDO E PULSE AÑADIR O EDITAR)
         }
 
         private void rellenaCasillasRuta(object sender, SelectionChangedEventArgs e)
@@ -306,6 +308,18 @@ namespace HITO2_IPO_NUEVO
             var rutaAux = listadoRutas[index];
             imprimirNombrePuntosInteres(rutaAux.Nombre);
         }
+
+        private void click_añadir_Ruta(object sender, RoutedEventArgs e)
+        {
+            inicializaComponentesRutas();
+        }
+
+
+
+
+
+
+
 
 
 
@@ -387,7 +401,7 @@ namespace HITO2_IPO_NUEVO
             return listado;
         }
 
-        void inicializaComponenetesExcursionistas()
+        void inicializaComponenentesExcursionistas()
         {
             cb_rutasExcursionistas.IsEnabled = false;
             cb_ofertas.IsEnabled = false;
@@ -399,6 +413,8 @@ namespace HITO2_IPO_NUEVO
             bt_editarExcursionista.IsEnabled = false;
             bt_eliminarExcursionista.IsEnabled = false;
             lb_rutasrealplaExcursionista.Items.Clear();
+
+            //quedaría deshabilitar boton GUARDAR CUANDO LO CREEN (SE ACTIVARÁ SÓLO CUANDO E PULSE AÑADIR O EDITAR)
         }
 
         private void rellenaCasillasExcursionista(object sender, SelectionChangedEventArgs e)
@@ -429,7 +445,7 @@ namespace HITO2_IPO_NUEVO
             }
             else 
             {
-                inicializaComponenetesExcursionistas();
+                inicializaComponenentesExcursionistas();
             }
         }
 
@@ -550,7 +566,7 @@ namespace HITO2_IPO_NUEVO
             return listado;
         }
 
-        void inicializaComponenetesGuias()
+        void inicializaComponenentesGuias()
         {
 
             cb_rutasGuias.IsEnabled = false;
@@ -564,6 +580,8 @@ namespace HITO2_IPO_NUEVO
             bt_editarGuia.IsEnabled = false;
             bt_eliminarGuia.IsEnabled = false;
             lb_rutasrealplaGuias.Items.Clear();
+
+            //quedaría deshabilitar boton GUARDAR CUANDO LO CREEN (SE ACTIVARÁ SÓLO CUANDO E PULSE AÑADIR O EDITAR)
         }
 
         private void rellenaCasillasGuias(object sender, SelectionChangedEventArgs e)
@@ -588,7 +606,7 @@ namespace HITO2_IPO_NUEVO
             }
             else
             {
-                inicializaComponenetesGuias();
+                inicializaComponenentesGuias();
             }
 
         }
@@ -632,6 +650,10 @@ namespace HITO2_IPO_NUEVO
             }
         }
 
+        private void click_añadir_Guia(object sender, RoutedEventArgs e)
+        {
+            inicializaComponenentesGuias();
+        }
 
 
 
@@ -682,7 +704,7 @@ namespace HITO2_IPO_NUEVO
             return listado;
         }
 
-        void inicializaComponenetesOfertas()
+        void inicializaComponenentesOfertas()
         {
             tb_nombre_oferta.Text = "";
             tb_rutaOferta.Text = "";
@@ -692,6 +714,8 @@ namespace HITO2_IPO_NUEVO
             bt_anadirOferta.IsEnabled = true;
             bt_editarOferta.IsEnabled = false;
             bt_eliminarOferta.IsEnabled = false;
+
+            //quedaría deshabilitar boton GUARDAR CUANDO LO CREEN (SE ACTIVARÁ SÓLO CUANDO E PULSE AÑADIR O EDITAR)
         }
 
         private void rellenaCasillasOferta(object sender, SelectionChangedEventArgs e)
@@ -720,7 +744,7 @@ namespace HITO2_IPO_NUEVO
             }
             else
             {
-                inicializaComponenetesOfertas();
+                inicializaComponenentesOfertas();
             }
 
         }
@@ -786,7 +810,7 @@ namespace HITO2_IPO_NUEVO
             }
         }
 
-        private void inicializaComponenetesPuntosInteres()
+        private void inicializaComponenentesPuntosInteres()
         {
             lb_nombre_pdi.Content = "";
             tb_descricpcionpdi.Text = "";
@@ -828,9 +852,11 @@ namespace HITO2_IPO_NUEVO
             }
             else
             {
-                inicializaComponenetesPuntosInteres();
+                inicializaComponenentesPuntosInteres();
             }
         }
+
+        
     }
 }
     
